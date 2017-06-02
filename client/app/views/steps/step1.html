@@ -1,0 +1,123 @@
+<!--<div class="row height80">
+  <div class="col-md-4 col-sm-4 col-xs-6  height48" ng-repeat="template in Tmplts|orderBy:sortType">
+    <div class="thumbnail height100">
+      <a ng-href="#/templates/{{template._id}}">
+      <img ng-src="{{template.imgPreview}}" class="template-preview" ng-click="clearSavedState()"/>
+      <div class="caption">
+        <p class="fontSize1vw">{{template.titleProject}}</p>
+      </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-6  height48" ng-repeat="room in step1.data">
+    <div class="thumbnail height100">
+      <img ng-src="{{room.icon}}" ng-click="InvisibleStep1(room)" />
+      <div class="caption">
+        <p class="fontSize1vw">{{room.room_name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-6  height48" ng-repeat="template in suits|orderBy:sortType">
+    <div class="thumbnail height100">
+      <a ng-href="#/templates/{{template._id}}">
+      <img ng-src="{{template.imgPreview}}" class="template-preview" ng-click="clearSavedState()"/>
+      <div class="caption">
+        <p class="fontSize1vw">{{template.titleProject}}</p>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>-->
+<div class="onboarding-wrapper full-width in" ng-show="showWelcome">
+  <div class="onboarding-content on-welcome">
+    <div class="on-welcome-title">
+      Welcome to Vigilant Inc.'s
+      <br>
+      Design It Yourself (DIY)
+      <br>
+      Wine Cellar Planner
+    </div>
+    <div class="on-welcome-text">
+      We hope you enjoy using our fun and easy DIY Wine Cellar Planner
+      <br>
+      to help design your dream wine cellar.
+      <br><br>
+      If you have any questions about how to use the DIY Wine Cellar Planner,
+      <br>
+      please visit our
+      <a href="http://vigilantinc.com" target="_blank">tips section</a>
+      .
+      <br><br>
+      Feel free to call us toll free at
+      <a href="tel:+18667565276">+1 (866) 756-5276</a><br>
+      or email us at
+      <a href="mailto:info@vigilantinc.com">info@vigilantinc.com</a>
+      .
+    </div><a class="btn btn-primary btn-lg on-btn" ng-click="showWelcome=false; showPopupLayouts=true;">Let's start</a></div>
+</div>
+<div ng-show="showPopupLayouts">
+<div class="modal-backdrop fade in"></div>
+<div role="dialog" tabindex="-1" class="fade in modal" style="display: block;">
+  <div class="modal-new-project modal-dialog">
+    <div class="modal-content" role="document">
+      <div>
+        <div class="modal-header">
+          <h4 class="modal-title">Choose Layout
+            <i class="icon-close close pull-right" ng-click="hidePopup()"></i>
+          </h4>
+        </div>
+        <div class="modal-body"> 
+          <div class="new-project-tabs">
+            <div class="new-project-tabs-wrapper">
+              <a id="default" class="new-project-tabs-link"
+                ng-click="defTab = true; selected=null" ng-class="{'active': defTab}">Default</a>
+              <a id="saved" class="new-project-tabs-link" 
+                ng-click="defTab = false; selected=null" ng-class="{'active': !defTab}">Saved projects</a>
+              <div class="slide"></div>
+            </div>
+          </div>
+          <div class="modal-body-content layouts" ng-show="defTab">
+            <div class="row project-shapes" ng-repeat="templCont in Tmplts| orderBy:sortType">
+              <div class="col-sm-4 proj-layout-cont" ng-repeat="template in templCont" track by $index>
+                  <div class="project-shape" ng-click="onLayoutChecked(template)"
+                    ng-class="{'layout-activated': template._id == selected}">
+                    <div class="project-shape-img">
+                      <img ng-src="{{template.imgPreview}}" ng-click="clearSavedState()"/>
+                    </div><span class="project-shape-title">{{template.titleProject}}</span>
+                  </div>
+              </div>
+              
+            </div>
+            <!--<div class="col-sm-4 proj-layout-cont" ng-repeat="room in step1.data" track by $index>
+                  <div class="project-shape" ng-click="onLayoutChecked(template)"
+                    ng-class="{'layout-activated': template._id == selected}">
+                    <div class="project-shape-img">
+                      <img ng-src="{{room.icon}}" ng-click="clearSavedState()" />
+                    </div><span class="project-shape-title">{{room.room_name}}</span>
+                  </div>
+              </div>-->
+          </div>
+          <div class="modal-body-content layouts" ng-show="!defTab">
+            <div class="row project-shapes" ng-repeat="roomCont in userRooms| orderBy:sortType">
+              <div class="col-sm-4 proj-layout-cont" ng-repeat="room in roomCont" track by $index>
+                  <div class="project-shape" ng-click="onLayoutChecked(room)" 
+                    ng-class="{'layout-activated': room._id == selected}">
+                    <div class="project-shape-img">
+                      <img ng-src="{{room.imgPreview}}" ng-click="clearSavedState()"/>
+                    </div><span class="project-shape-title">{{room.titleProject}}</span>
+                  </div>
+              </div>
+            </div>
+            <div ng-show="!user" class="aligned-center"><a href="#/login" class="login-anchor">Login</a></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-lg btn-primary btn-block" 
+            ng-click="start()" ng-disabled="(!user || !userRooms.length) && !defTab">
+            {{defTab? 'Start new project': 'Load project'}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

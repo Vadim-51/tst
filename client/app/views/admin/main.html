@@ -1,0 +1,145 @@
+<!-- Step 1: Create the containing elements. -->
+<div class="row">
+    <div class="col-md-12">
+        <section id="auth-button"></section>
+    </div>
+</div>
+
+<div ng-show="isAuthorizeByGoogle">
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+            <div class="dropdown">
+                <div class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown">
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly
+                               placeholder="Start date"
+                               data-date-time-input="YYYY-MM-DD"
+                               data-ng-model="dateStart">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="dateStart"
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown1',minView:'day'}"/>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <div class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown">
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly
+                               placeholder="End date"
+                               data-date-time-input="YYYY-MM-DD"
+                               data-ng-model="dateEnd">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="dateEnd"
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2',minView:'day'}"/>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default" ng-click="initDate()">Reset Period</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group ga-buttons">
+                <li ng-repeat="item in tabs"
+                    ng-class="{selected: activeTab === $index}"
+                    ng-click="activateTab($index);"
+                    class="list-group-item">
+                    {{item.text}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <!-- Show Table Data with New Accounts User-->
+            <div class="row" ng-show="activeTab === 4">
+                <div class="col-md-12 col-sm-12 co-xs-12" style="margin: 10px 0;">
+                    <table id="reportNewAccounts" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Device Used</th>
+                            <th>Browser</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- Show Table Data with Activity Users-->
+            <div class="row" ng-show="activeTab === 6">
+                <div class="col-md-12 col-sm-12 co-xs-12" style="margin: 10px 0;">
+                    <table id="reportUserActivity" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+
+            <section ng-show="[0,1,2,3,5].indexOf(activeTab)!==-1" id="chart"></section>
+
+            <!-- Show Table Data with ShoppingList Amount-->
+            <div class="row" ng-show="activeTab === 7">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="margin: 10px 0;">
+                    <label>Total Shopping List Value:</label> {{totalAmount}}
+                </div>
+                <div style="margin: 10px 0;" class="col-md-12 col-sm-12 col-xs-12">
+                    <table id="shoppingListReport" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Project</th>
+                            <th>Project Amount</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Show Table Data with Granular Report-->
+            <div class="row" ng-show="activeTab === 8">
+                <div style="margin: 10px 0;" class="col-md-12 col-sm-12 col-xs-12">
+                    <table id="granularReport" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Project</th>
+                            <th>Project Amount</th>
+                            <th>Product on report</th>
+                            <th>Type of device used</th>
+                            <th>Browser</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

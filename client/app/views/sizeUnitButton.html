@@ -1,0 +1,31 @@
+﻿<table style="width: 100%;margin: 5px 0;">
+    <tr>
+        <td style="text-align: center;">
+            Size units
+        </td>
+
+        <td style="text-align: center;">
+
+            <div class="btn-group" role="group">
+
+                <!--<button type="button"
+                        class="btn btn-info"
+                        ng-class="{active : sizeUnits === 'FT'}"
+                        ng-click="sizeUnitsChange('FT',$event)">FT</button>
+
+                <button type="button"
+                        class="btn btn-info"
+                         ng-class="{active : sizeUnits === 'CM'}"
+                        ng-click="sizeUnitsChange('CM',$event)">CM</button>-->
+
+                <button type="button" ng-repeat="button in buttons"
+                        class="btn btn-info"
+                        ng-class="{active : sizeUnits === button.value }"
+                        ng-click="sizeUnitsChange(button,$event)">
+                    {{button.text}}
+                </button>
+
+            </div>
+        </td>
+    </tr>
+</table>

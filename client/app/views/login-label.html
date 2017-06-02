@@ -1,0 +1,43 @@
+<div id="logedUser">
+    <a ng-hide="userLogged" href="#/login" id="fieldWithLogin" class="login-label">Login</a>
+    <!-- Single button -->
+    <div ng-show="userLogged" class="btn-group">
+        <!--<span class="glyphicon glyphicon-user" ></span>
+        <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{labelUserLogged}} <span class="caret"></span>
+        </a>-->
+        <a id="user-actions-dropdown" role="button" class="dropdown-toggle" 
+            aria-haspopup="true" aria-expanded="false" type="button" data-toggle="dropdown">
+            <span><img src="/assets/images/default/avatar_sm.png" 
+            srcset="/assets/images/default/avatar_sm@2x.png 2x" style="margin-right: 0px;">
+            </span>
+            <span class="caret-c"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#/account">My Projects</a></li>
+            <li role="separator" class="divider"></li>
+            <li ng-if="templateMaster"><a href="#/models_publish">Models publishing</a></li>
+            <li ng-if="templateMaster" role="separator" class="divider"></li>
+            <li ng-if="templateMaster"><a href="#/material_publish">Materials publishing</a></li>
+            <li ng-if="templateMaster" role="separator" class="divider"></li>
+            <li ng-if="templateMaster"><a href="#/suite_publish">Suites publishing</a></li>
+            <li ng-if="templateMaster" role="separator" class="divider"></li>
+            <li ng-if="templateMaster"><a href="#/color_sheme_publish">Color scheme rules publishing</a></li>
+            <li ng-if="templateMaster" role="separator" class="divider"></li>
+            <li ng-if="templateMaster"><a href="#/left_menu_publish">Left menu items publish</a></li>
+            <li ng-if="templateMaster" role="separator" class="divider"></li>
+            <li role="presentation">
+                <size-units-button />
+            </li>
+            <li role="presentation" class="">
+                <a role="menuitem" tabindex="-1" href="#">
+                    <i class="icon-info"></i>Help tips
+                </a>
+            </li>
+            <li><a  href="" ng-click="logout()">
+                <i class="icon-exit"></i>
+                Exit</a>
+            </li>
+        </ul>
+    </div>
+</div>

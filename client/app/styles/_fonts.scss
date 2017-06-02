@@ -1,0 +1,91 @@
+$font-path: '/assets/fonts/';
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-Light.ttf') format('ttf');
+    //url($font-path + 'GothamProLight.eot') format('eot'),
+    //url($font-path + 'GothamProLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-LightItalic.ttf') format('ttf');
+    //url($font-path + 'GothamProLight.eot') format('eot'),
+    //url($font-path + 'GothamProLight.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-Regular.ttf') format('ttf');
+    //url($font-path + 'GothamProRegular.eot') format('eot'),
+    //url($font-path + 'GothamProRegular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-Italic.ttf') format('ttf');
+    //url($font-path + 'GothamProRegular.eot') format('eot'),
+    //url($font-path + 'GothamProRegular.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-Semibold.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-SemiboldItalic.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-Bold.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-BoldItalic.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-ExtraBold.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url($font-path + 'OpenSans-ExtraBoldItalic.ttf') format('ttf');
+    //url($font-path + 'GothamProMedium.eot') format('eot'),
+    //url($font-path + 'GothamProMedium.woff') format('woff');
+    font-weight: 800;
+    font-style: italic;
+}

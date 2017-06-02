@@ -1,0 +1,18 @@
+<div class="row parent">
+    <div class="arrow-left col-sm-1 col-xs-1">
+        <img src="../images/sliderArrow/arrow_left.png" ng-click="scroling(-1)" />
+    </div>
+
+    <div class="inlineBlock width col-sm-10 col-xs-10">
+        <div class="img-item" ng-repeat="image in images">
+            <img ng-src="{{image.img}}" ng-mousedown="itemClick(image)"
+                  ng-class="[{selectedItem:selectedItem === image}]"
+                 ng-click="itemTouch(image,$event)">
+        </div>
+    </div>
+
+    <div class="arrow-right col-sm-1 col-xs-1">
+        <img src="../images/sliderArrow/arrow_right.png" ng-click="scroling(1)" />
+    </div>
+</div>
+

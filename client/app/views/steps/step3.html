@@ -1,0 +1,42 @@
+
+
+<div class="row height70">
+
+    <products-list-new entity-click-callback="itemClick" />
+
+    <div class="col-sm-9 col-xs-12 col-lg-10 col-md-10 height100" style="width: 100%">
+        <div class="canvasWrapper">
+            <webgl step="step3"></webgl>
+            <step-tooltip step="3" key="step3ToolTip">
+                Personalize your project with building elements
+            </step-tooltip>
+
+            <div class="tools-side-menu" ng-show="showSideMenu">
+
+                <delete-object-button selected-mesh="selectedMesh" />
+
+                <div class="doorMenu" ng-show="optionIsVisible([abilities.DOOR_FLIP_X, abilities.DOOR_FLIP_Y])">
+                    <img src="../../images/doorLeftOrRight.png" ng-click="doorMenuItemClick(0)"
+                         ng-show="selectedMesh.userData.entity.abilities.indexOf(abilities.DOOR_FLIP_X)!==-1" />
+                    <img src="../../images/doorTopOrBottom.png" ng-click="doorMenuItemClick(1)"
+                         ng-show="selectedMesh.userData.entity.abilities.indexOf(abilities.DOOR_FLIP_Y)!==-1" />
+                </div>
+
+                <div ng-show="optionIsVisible([abilities.MIRROW])">
+                    <button class="btn btn-default" style="margin: 5px;" ng-click="flipBtnClick()">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                        Flip
+                        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div ng-show="optionIsVisible([abilities.ROTATE])" style="height:80%">
+                    <slider custom-slider step="15" min="0" max="360" ng-model="rotationAngle" orientation="vertical" class="stairsRotationSlider">
+                    </slider>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

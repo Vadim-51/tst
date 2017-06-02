@@ -1,0 +1,106 @@
+﻿<div class="product-details product-details-hide" 
+     ng-class="{'product-details-show' : !isHidden}">
+
+    <div class="product-details-header">
+        <span>Properties</span>
+        <i class="icon-close pull-right" ng-click="close()"></i>
+    </div>
+
+    <div class="product-details-item">
+
+        <img class="product-details-item--img" 
+             ng-show="product.productImg"
+             ng-src="{{product.productImg}}">
+        <span class="product-details-item--title">{{product.description}}</span>
+
+        <div role="tablist" class="panel-group" id="product-details-accordion">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading" 
+                        data-parent="#product-details-accordion"
+                        data-toggle="collapse"
+                        href="#product-details-details"
+                        role="tab">
+                    <h4 role="presentation" class="panel-title">Details</h4>
+                </div>
+
+                <div role="tabpanel"
+                     class="panel-collapse collapse"
+                     id="product-details-details">
+                    <div class="panel-body">
+                        <dl class="product-details-item-desc">
+                            <dt class="product-details-item-desc--prop">Product code:</dt>
+                            <dd class="product-details-item-desc--value">-</dd>
+                            <dt class="product-details-item-desc--prop">Bottle count:</dt>
+                            <dd class="product-details-item-desc--value">-</dd>
+                            <dt class="product-details-item-desc--prop">Dimensions:</dt>
+                            <dd class="product-details-item-desc--value">{{product.length}}x{{product.width}}x{{product.height}}</dd>
+                            <dt class="product-details-item-desc--prop">Weight:</dt>
+                            <dd class="product-details-item-desc--value">-</dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading"
+                     role="tab"
+                     data-parent="#product-details-accordion"
+                     data-toggle="collapse"
+                     href="#product-details-colors">
+                    <h4 role="presentation" class="panel-title">Colors</h4>
+                </div>
+
+                <div role="tabpanel"
+                     id="product-details-colors"
+                     class="panel-collapse collapse">
+                    <div class="panel-body" style="overflow-x: hidden;">
+                        <material-list mesh="object3D" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading"
+                        role="tab"
+                        data-toggle="collapse"
+                        data-parent="#product-details-accordion"
+                        href="#product-details-swaps">
+                    <h4 role="presentation" class="panel-title">Swap items</h4>
+                </div>
+
+                <div role="tabpanel" 
+                     id="product-details-swaps"
+                     class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <!--<div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_1.jpg">
+                        </div>
+                        <div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_2.jpg">
+                        </div>
+                        <div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_3.jpg">
+                        </div>
+                        <div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_4.jpg">
+                        </div>
+                        <div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_5.jpg">
+                        </div>
+                        <div class="product-details-swap-item">
+                            <img src="/assets/images/items/classic_rack_6.jpg">
+                        </div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-lg btn-primary btn-block product-details-apply">Apply to all</a>
+</div>

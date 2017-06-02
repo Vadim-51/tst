@@ -1,0 +1,81 @@
+<div>
+    <button type="button" ng-show="!formVisible && currentSuite" ng-click="setFormVisible(true)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    <button type="button" ng-show="formVisible" ng-click="setFormVisible(false)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+    <br>
+    <form ng-show="formVisible">
+
+        <fieldset>
+            <label>Name</label>
+            <input type="text" ng-model="currentSuite.name">
+        </fieldset>
+
+        <fieldset>
+            <label>Visible?</label>
+            <input type="checkbox" ng-model="currentSuite.visible">
+        </fieldset>
+
+        <fieldset>
+            <label>Left menu thumbnail</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'LeftMenuThumbnails', currentSuite._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentSuite.leftMenuImg}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Product images</label>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="text-align: center;">
+                        <button ngf-select="addFilesForUpload($file, 'ProductImage', currentSuite._id)" multiple accept="image/*">Select image</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <img style="max-width: 100%;" ng-src="{{currentSuite.productImage}}">
+                    </div>
+                </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Shopping list images</label>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="text-align: center;">
+                        <button ngf-select="addFilesForUpload($file, 'ShoppingList', currentSuite._id)" multiple accept="image/*">Select image</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <img style="max-width: 100%;" ng-src="{{currentSuite.shoppingListImage}}">
+                    </div>
+                </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Swap pictogram image</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'SwapPictogram', currentSuite._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentSuite.swapImage}}">
+                </div>
+        </fieldset>
+
+        <button ng-click="updateSuite();">Update suite</button>
+    </form>
+    <br>
+
+    <div ng-repeat="suite in suites">
+        {{suite.name}}
+        <button type="button" title="Edit model" ng-click="editSuite(suite);">
+                <span class="glyphicon glyphicon-edit"></span>
+            </button>
+        <button type="button" title="Delete model" ng-click="deleteSuite(suite);">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+    </div>
+</div>

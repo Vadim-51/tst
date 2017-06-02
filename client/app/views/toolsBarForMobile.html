@@ -1,0 +1,79 @@
+<!--<div class="col-xs-12 tools-bar " ng-show="VisibleStep2 || VisibleStep3">-->
+    <!--<div class="btn-group dropup">-->
+        <!--<button type="button" class="btn-text btn btn-default">{{dataUnitFT ? 'ft' : 'cm'}}</button>-->
+        <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"-->
+                <!--aria-expanded="false">-->
+            <!--<span class="caret"></span>-->
+            <!--<span class="sr-only">Toggle Dropdown</span>-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu">-->
+            <!--<li ng-click="SPLchangeUnit('FT')">ft</li>-->
+            <!--<li ng-click="SPLchangeUnit('CM')">cm</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<ul class="tools-bar-item">-->
+        <!--<li class="zoom">-->
+                <!--<span class="zoom-out">-->
+                    <!--<img data-toggle="tooltip" data-placement="top" title="Zoom Out" alt="Zoom Out"-->
+                         <!--ng-click="changeZoom(1)" src="images/tools/zoom_out.png"/>-->
+                <!--</span>-->
+
+                <!--<span class="zoom-in">-->
+                    <!--<img data-toggle="tooltip" data-placement="top" title="Zoom In" alt="Zoom In"-->
+                         <!--ng-click="changeZoom(-1)" src="images/tools/zoom_in.png"/>-->
+                <!--</span>-->
+        <!--</li>-->
+        <!--<li class="fit-screen">-->
+        <!--<span>-->
+          <!--<img title="Fit Screen" alt="Fit Screen"-->
+               <!--ng-click="fitScreen()" src="images/tools/FitToScreen.png"/>-->
+        <!--</span>-->
+        <!--</li>-->
+        <!--<li class="drag-point" ng-show="VisibleStep2">-->
+            <!--<span>Lock Corners</span>-->
+            <!--<input type="checkbox" ng-checked="allowMoveTouchPoint" ng-click="changeAllowMoveTouchPoint()"/>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<screenshot-button format="two-dimensional"/>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+<!--<div class="col-xs-12" ng-show="VisibleStep4">-->
+    <!--<step4-bottom-toolbar />-->
+<!--</div>-->
+
+<div class="col-xs-12">
+    <div class="row">
+        
+        <div class="textleft col-xs-6" ng-click="stepByStepProgress(-1)">
+            <div class="row">
+                <div class="col-xs-12">
+                    <i class="left-triangle"></i>
+                    <label class="arrow-back">BACK</label>
+                </div>
+                <!--<div class="col-xs-12 guide-caption-left">-->
+                    <!--<p>{{backStep}}</p>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div ng-show="VisibleStep5" class="tools-bar col-xs-6">
+            <ul class="tools-bar-item">
+                <li >
+                    <screenshot-button dropup="true" step="5"/>
+                </li>
+            </ul>
+        </div>
+        <div ng-hide="VisibleStep5" class="textright col-xs-6" ng-click="stepByStepProgress(1)">
+            <div class="row">
+                <div class="col-xs-12">
+                    <i ng-hide="VisibleStep5" class="right-triangle"></i>
+                    <label ng-hide="VisibleStep5" class="arrow-next">NEXT</label>
+                </div>
+                <!--<div class="col-xs-12 guide-caption-right">-->
+                    <!--<p>{{nextStep}}</p>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>

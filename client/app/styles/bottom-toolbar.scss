@@ -1,0 +1,15 @@
+﻿.bottom-toolbar {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+
+    a {
+        color: gray;
+    }
+
+    a, i, img {
+        cursor: pointer;
+    }
+
+   
+}

@@ -1,0 +1,101 @@
+﻿<div class="visible-xs">
+
+    <div class="display-table" style="margin-bottom: 5px">
+
+        <div class="width50 v-align-middle" style="padding: 0 5px 0 5px">
+
+            <div class="btn-group wallDropDown" ng-class="{open: isWallDropDownOpen}" ng-click="isWallDropDownOpen=!isWallDropDownOpen">
+                <button class="btn btn-default dropdown-toggle width90" aria-expanded="false" type="button" data-toggle="dropdown">
+                    {{selectedWall}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="wall in walls" ng-click="isWallDropDownOpen=false;onWallChange(wall)">
+                        <a>{{wall}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button ng-click="freeLookBtnClick()" ng-show="walls.length > 0 && walls.indexOf(selectedWall)!==0" class="btn btn-default width100"
+                    style="margin-top: 5px">
+                Change View
+            </button>
+        </div>
+
+        <div class="width50 text-left" style="padding: 0 5px 0 5px">
+            <span>
+                <wall-id-check-box />
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="width100 margin-none padding-none" style="height: 100%">
+
+    <products-list-new entity-click-callback="itemClick" />
+
+    <div class="height100 margin-none padding-none not-selectable" style="position:relative;">
+
+        <!--<scene3d id="scene3d" associated-step-index="4"></scene3d>-->
+
+        <webgl step="step4"></webgl>
+
+        <step-tooltip step="4" key="step4ToolTip">
+            Click on any wall to view and personalize your Vigilant Wine Cellar.
+        </step-tooltip>
+
+        <div style="color: black;background-color: rgba(200,200,200, 0.6);font-weight: bold;" class="arrow left" ng-show="isInWallMode"
+             ng-click="changeWall(-1)">
+            <span class="glyphicon glyphicon-menu-left"></span>Prev
+        </div>
+
+        <div style="color: black;background-color: rgba(200,200,200, 0.6);font-weight: bold;" class="arrow right" ng-show="isInWallMode"
+             ng-click="changeWall(1)">
+            Next<span class="glyphicon glyphicon-menu-right"></span>
+        </div>
+
+        <!--<wall-scroll />-->
+
+    </div>
+
+    <div class="height100 hidden-xs" style="padding: 0 5px 0 5px; 
+        position: absolute;right: 1%; top: 10%; height: 450px;" id="right-menu">
+
+        <span>
+            <wall-id-check-box />
+        </span>
+        <span>
+            <group-items-check-box />
+        </span>
+        <span>
+            <snapping-check-box />
+        </span>
+        <span>
+            <undo-button />
+        </span>
+
+        <div class="btn-group wallDropDown" ng-class="{open: isWallDropDownOpen}" style="margin-top: 10px" ng-click="isWallDropDownOpen=!isWallDropDownOpen">
+            <button class="btn btn-default dropdown-toggle" aria-expanded="false" type="button" data-toggle="dropdown">
+                {{selectedWall}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li ng-repeat="wall in walls" ng-click="isWallDropDownOpen=false;onWallChange(wall)">
+                    <a>{{wall}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <align-object-button wall="walls.indexOf(selectedWall)===0 ? null : selectedWall" />
+
+        <!--<material-list mesh="selectedObject" />-->
+
+        <button ng-click="freeLookBtnClick()" ng-show="walls.length > 0 && walls.indexOf(selectedWall)!==0" class="btn btn-default width100"
+                style="margin-top: 10px;">
+            Change View
+        </button>
+
+    </div>
+</div>

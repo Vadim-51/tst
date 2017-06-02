@@ -1,0 +1,156 @@
+<div class="row border">
+	<div class="col-sm-8">
+  	  <div class="row ">
+    	  <div class="col-sm-4 ">
+			<img  class="maxheightWidth100 pictureWithBorder" src="../images/DriCore.png" alt="brand" "pictureWithBorder"/>  
+     	 </div>
+		</div>
+	</div>
+		<div class="col-sm-4">
+			<p class="vw2">Planning Guide & Required Products</p>
+		</div>
+</div>
+<div class="row border" >
+	<div class="col-sm-6">
+		<div class="row ">
+			<div class="col-sm-4">
+				<label for="check1"class="margtop5">Project Details:</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" id="check1" class="form-ctl" placeholder="    Project Name">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="linear"class="margtop5">Linear</label>
+						<label for="Floor_Area"class="margtop5">Floor Area</label>
+					</div>
+					<div class="col-sm-6">
+						<input type="text" id="linear" disabled="disabled"> <span>ft./m</span>
+						<input type="text" id="Floor_Area" disabled="disabled"> <span>ft2/m</span>
+					</div>	
+				
+				</div>
+			</div>
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-sm-6">
+							<label for="No_of_Walls"class="margtop5">No. of Walls</label>
+							<label for="Wall_Area "class="margtop5">Wall Area </label>
+						</div>
+						<div class="col-sm-6">
+							<input type="text" id="No_of_Walls" disabled="disabled">
+							<input type="text" id="Wall_Area" disabled="disabled"> <span>ft2/m</span>
+						</div>	
+					</div>	
+				</div>
+		 </div>
+		</div>
+    <div class="col-sm-6">
+		<div class="row">
+			<div class="col-sm-6">
+				<p><b>Project Address</b></p>
+				<input type="text"class="border form-ctl">
+				<input type="text"class="border form-ctl">
+				<input type="text"class="border form-ctl">
+			</div>
+			
+			<div class="col-sm-6">
+				<p><b>Contact Details</b></p>
+				<input type="text"class="border form-ctl">
+				<input type="text"class="border form-ctl">
+				<input type="text" placeholder="  Other Tel." class="border form-ctl">	
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row border height50">
+		<div class="col-sm-4">
+			<table ng-show="tableUnitFT" class="table-content table table-bordered" >
+				<tbody>
+					<tr ng-style="{'background-color': (backlightWall.name === wall.name ? '#eee' : '') 
+								|| (wallNeighborLeft.name === wall.name ? '#5edb0f' : '') 
+								|| (wallNeighborRight.name === wall.name ? '#5edb0f' : '')}" 
+								ftin width="{{wall.length}}" wallname="{{wall.name}}" 
+								wallnumber="{{$index + 1}}" ng-repeat="wall in wallArray">         
+					</tr>
+				</tbody>
+			</table> 
+			 
+			<table ng-show="tableUnitCM" class="table-content table table-bordered" >
+				<tbody>
+					<tr ng-style="{'background-color': (backlightWall.name === wall.name ? '#eee' : '') 
+						|| (wallNeighborLeft.name === wall.name ? '#5edb0f' : '') 
+						|| (wallNeighborRight.name === wall.name ? '#5edb0f' : '') }" 
+						ng-repeat="wall in wallArray">
+						<td>Wall #{{$index + 1}}</td>
+     					 <td>CM</td>
+						<td><input ng-keypress="pressEnter($event)" 
+								 ng-disabled="(wallNeighborLeft.name === wall.name || wallNeighborRight.name === wall.name ? false : true)" 
+								 type="number" ng-model="wall.width" 
+								 ng-change="changeLengthInCM(wall.width, wall.name)" min="1" max="1000" step="0.1" ></td>
+					</tr>
+				</tbody>
+			</table> 
+	</div>
+	
+		<div class="col-sm-8 borderLeft height100">
+			<img  class="maxheightWidth100" src="../images/room_3.png" alt="8"/>  
+		</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12">
+		<table style="width:100%"class="border">
+			 <thead >
+  				 <tr >
+    			 	 <th>Shopping List</th>
+     				 <th>Qty.</th>
+					  <th>Retail </th>
+				 	 <th>Amount</th>
+  			  </tr>
+ 			 </thead>
+			<tfoot>
+				<tr>
+					<td><b>Project Total                     (excluding taxes, shipping)</b></td>
+					<td></td>
+					<td></td>
+					<td>$180</td>
+				</tr>
+			</tfoot>
+			
+			<tr>
+				<td><b>Vigilant Products</b></td>
+					<td></td>		
+					<td></td>
+					<td></td>
+				</tr>
+				
+			<tr >
+				<td><b>Vigilant Subfloor</b>
+				</td>
+				<td></td>		
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><b> General Supplies</b></td>
+					<td></td>		
+					<td></td>
+					<td></td>
+			</tr>
+   
+		</table>
+	</div>
+</div>
+		
+		
+
+
+
+

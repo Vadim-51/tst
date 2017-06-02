@@ -1,0 +1,56 @@
+﻿<div class="display-table">
+
+    <div class="width10 text-left hidden-md hidden-lg">
+        <span class="glyphicon glyphicon-chevron-left arrow"
+              ng-click="switch(-1)"
+              aria-hidden="true"></span>
+    </div>
+
+    <div class="width80 text-center" style="padding-bottom: 10px;">
+        <div style="position: relative">
+
+            <img id="screenshot" ng-src="http://95.85.31.212:7000{{selected.image}}" class="not-selectable"
+            ng-click="goFullScreen();" style="max-width: 100%; " ng-show="screenshots.length>0" />
+
+            <h1 ng-show="screenshots.length===0">
+                No screenshots
+            </h1>
+
+            <div class="deleteButton" ng-show="selected">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" ng-click="deleteScreenshot()"></span>
+                <span class="glyphicon glyphicon-print" ng-click="printScreenshot()"></span>
+            </div>
+            <div class="openShareButton" ng-click="OpenSocialShare()" ng-show="selected">
+                <img src="images/share_open.png"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="width10 text-right hidden-md hidden-lg">
+        <span class="glyphicon glyphicon-chevron-right arrow"
+              ng-click="switch(1)"
+              aria-hidden="true"></span>
+    </div>
+
+</div>
+
+<div class="display-table hidden-xs hidden-sm" ng-hide="screenshots.length===0">
+
+    <div class="width10 text-left">
+        <span class="glyphicon glyphicon-chevron-left arrow"
+              ng-click="switch(-1)"
+              aria-hidden="true"></span>
+    </div>
+
+    <div class="screenshots-row">
+        <img ng-repeat="screenshot in screenshots" ng-src="http://95.85.31.212:7000{{screenshot.image}}"
+             ng-class="{selected:screenshot === selected}"
+             ng-click="selectScreenshot(screenshot)" class="not-selectable" />
+    </div>
+
+    <div class="width10 text-right">
+        <span class="glyphicon glyphicon-chevron-right arrow"
+              ng-click="switch(1)"
+              aria-hidden="true"></span>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<div class="sidebar" style="z-index:5">
+    <div class="sidebar-toggle">
+        <a ng-class="{active: rootItem.isActive}"
+           ng-click="switchRoot(rootItem)"
+           class="sidebar-toggle-link"
+           ng-repeat="rootItem in rootItems">{{rootItem.text}}</a>
+        <div class="slide"></div>
+    </div>
+    <div class="sidebar-menu-wrapper not-selectable">
+
+        <ul class="sidebar-menu">
+            <li class="sidebar-menu-item"
+                ng-class="{'parent' : !item.parentId }"
+                ng-repeat="item in nodeItems"
+                ng-click="nodeClick(item)">
+                <a>
+                    {{item.text}}
+                    <i class="pull-right"
+                       ng-class="{'icon-chevron-right': item.parentId, 'icon-level-up' : !item.parentId }"></i>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-items not-selectable"
+             scroll-to-top="entities.length"
+             style="overflow-y: auto!important;">
+            <div class="sidebar-items-thumb" draggable="false" ng-repeat="entity in entities">
+                <div class="sidebar-items-thumb--wrapper"
+                     ng-mousedown="entityClick(entity,$event)"
+                     ng-click="entityClick(entity,$event)">
+                    <img ng-src="{{entity.leftMenuImg}}">
+                    <span class="sidebar-items-thumb--title">{{entity.description}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-items-search" ng-show="entities && entities.length!==0">
+            <input type="text" placeholder="Search items..."
+                   ng-model="searchPattern"
+                   press-enter="search(searchPattern)">
+            <i class="icon-search"
+               style="float:right"
+               ng-click="search(searchPattern)"></i>
+        </div>
+
+    </div>
+</div>

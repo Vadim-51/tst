@@ -1,0 +1,13 @@
+node_modules
+bower_components
+.idea
+client/.sass-cache
+client/.tmp
+client/.ftppass
+client/app/images
+server/dist/
+client/sftpCache.json
+client/app/textures
+client/images
+client/app/models
+client/app/assets

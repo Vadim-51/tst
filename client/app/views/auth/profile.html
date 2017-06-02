@@ -1,0 +1,127 @@
+<!--<div class="row">-->
+<h3 class="text-center">Account Settings</h3>
+
+<div class="col-md-12 col-sm-12">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a ng-click="resetUserDataIfNotSave()" data-target="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+        </li>
+        <li role="presentation">
+            <a ng-click="resetUserDataIfNotSave()" data-target="#email_password" aria-controls="email_password" role="tab"
+               data-toggle="tab">Email/Password</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="profile">
+            <div class="form-horizontal">
+                <form name="form.userProfileForm" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : form.userProfileForm.firstName.$invalid && !form.userProfileForm.firstName.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">First Name</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="firstName" type="text" class="form-control" ng-model="userProfileData.firstName"
+                                   placeholder="Enter first name" required>
+                            <span ng-show="form.userProfileForm.firstName.$invalid && !form.userProfileForm.v.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : form.userProfileForm.lastName.$invalid && !form.userProfileForm.lastName.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">Last Name</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="lastName" type="text" class="form-control" ng-model="userProfileData.lastName"
+                                   placeholder="Enter last name" required>
+                            <span ng-show="form.userProfileForm.lastName.$invalid && !form.userProfileForm.lastName.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 text-right">
+                            <button ng-click="updateUserProfileData()"  ng-disabled="form.userProfileForm.$invalid"
+                                    style="padding: 8px 30px; font-size: 16px; border-radius: 0;"
+                                    class="btn btn-success">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="email_password">
+            <div class="form-horizontal">
+                <form name="form.userAuthForm" novalidate>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : form.userAuthForm.email.$invalid && !form.userAuthForm.email.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">Email:</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="email" type="email" class="form-control" ng-model="userAuthData.email"
+                                   placeholder="Enter email" required>
+                            <span ng-show="form.userAuthForm.email.$invalid && !form.userAuthForm.email.$pristine"
+                                  class="help-block">Enter a valid email.</span>
+                            <span ng-show="form.userAuthForm.email.$error.required && !form.userAuthForm.email.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : form.userAuthForm.oldPass.$invalid && !form.userAuthForm.oldPass.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">Old Password</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="oldPass" type="password" class="form-control"
+                                   ng-model="userAuthData.oldPassword"
+                                   placeholder="Enter old password" required ng-minlength="6">
+                            <span ng-show="form.userAuthForm.oldPass.$error.minlength" class="help-block">Old Password is too short.</span>
+                            <span ng-show="form.userAuthForm.oldPass.$error.required && !form.userAuthForm.oldPass.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : form.userAuthForm.newPass.$invalid && !form.userAuthForm.newPass.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">New Password</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="newPass" type="password" class="form-control"
+                                   ng-model="userAuthData.newPassword"
+                                   placeholder="Enter new password" ng-minlength="6" required>
+                            <span ng-show="form.userAuthForm.newPass.$error.minlength" class="help-block">New Password is too short.</span>
+                            <span ng-show="form.userAuthForm.newPass.$error.required && !form.userAuthForm.newPass.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : form.userAuthForm.confirmPass.$invalid && !form.userAuthForm.confirmPass.$pristine }">
+                        <label class="control-label col-md-4 col-sm-3">Confirm Password</label>
+
+                        <div class="col-md-8 col-sm-9">
+                            <input name="confirmPass" type="password" class="form-control"
+                                   ng-model="userAuthData.confirmPassword"
+                                   placeholder="Confirm new password" ng-minlength="6" required>
+                            <span ng-show="form.userAuthForm.confirmPass.$error.minlength" class="help-block">Confirm Password is too short.</span>
+                            <span ng-show="form.userAuthForm.confirmPass.$error.required && !form.userAuthForm.confirmPass.$pristine"
+                                  class="help-block">Field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 text-right">
+                            <button ng-click="updateUserAuthData()" ng-disabled="form.userAuthForm.$invalid"
+                                    style="padding: 8px 30px; font-size: 16px; border-radius: 0;"
+                                    class="btn btn-success">Save
+                            </button>
+                            <!--<button ng-click="reset()"-->
+                                    <!--style="padding: 8px 30px; font-size: 16px; border-radius: 0;"-->
+                                    <!--class="btn btn-success">reset-->
+                            <!--</button>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--</div>-->

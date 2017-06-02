@@ -1,0 +1,110 @@
+* {
+ font-family: "Century Gothic", 'Didact Gothic', sans-serif;
+ color: #585858;
+ margin: 0 auto;
+}
+table.shopping-list-table{
+  border-collapse: collapse;
+}
+thead {
+    display: table-row-group;
+}
+.shopping-list-table  tr, td, th{
+  border-bottom: 2px solid #ddd;
+  vertical-align: top;
+}
+.shopping-list-table tr > th{
+  text-align: center;
+  vertical-align: middle;
+  font-weight: normal;
+  /*font-size: 18px;*/
+  font-size: 1em;
+}
+.shopping-list-table tr > td{
+  /*font-size: 16px;*/
+  font-size: 1em;
+}
+
+.shopping-list-table .item{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 15%;
+  line-height: 100%;
+  vertical-align: middle;
+}
+.shopping-list-table div{
+  text-align: center;
+  position: relative;
+}
+.shopping-list-table span{
+  position: absolute;
+  top: 30%;
+}
+.shopping-list-table .item-h, .shopping-list-table th.description{
+  text-align: left;
+  padding-left: 5px;
+}
+.shopping-list-table td.color,
+td.wdh, td.qty, td.price, td.total, td.remove, td.description{
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 50px;
+}
+.shopping-list-table td.description{
+  width: 25%;
+}
+.shopping-list-table .color{
+  width: 10%;
+}
+.shopping-list-table .wdh{
+  width: 20%;
+}
+.shopping-list-table .qty{
+  width: 5%;
+}
+.shopping-list-table .price, .total{
+  width: 12.5%;
+}
+/*.shopping-list-table .remove{
+   display: none;
+ }*/
+td.color, td.wdh, td.qty, td.price, td.total{
+  text-align: center;
+}
+.product-preview{
+  width: 55%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+.color-schema{
+  width: 70%;
+}
+.prompt{
+  font-size: 1.2em;
+  width: 49%;
+  display: inline-block;
+}
+#total{
+  text-align: right;
+}
+.logo{
+  max-width: 1200px;
+  width: 40%;
+  display: block;
+  margin: 0 0;
+}
+td.description div{
+  text-align: left;
+  font-size: .9em;
+  color: #BFC7C9;
+}
+#screenshot{
+  /*max-width: 100%;
+  height: auto;*/
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}

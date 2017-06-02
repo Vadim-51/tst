@@ -1,0 +1,11 @@
+﻿.switchView {
+    display: inline-block;
+    padding: 10px;
+    background: white;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.2);
+
+    .switchView a {
+        display: inline-block;
+        margin: 3px;
+    }
+}

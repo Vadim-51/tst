@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"OWNEROR-U9TA398-1692-stdout-1443626173095.txt","computername":"OWNEROR-U9TA398","pid":1692,"type":"stdout","created":1443626173095},{"file":"OWNEROR-U9TA398-2188-stdout-1443632389781.txt","computername":"OWNEROR-U9TA398","pid":2188,"type":"stdout","created":1443632389781},{"file":"OWNEROR-U9TA398-2720-stdout-1443626178782.txt","computername":"OWNEROR-U9TA398","pid":2720,"type":"stdout","created":1443626178782},{"file":"OWNEROR-U9TA398-2728-stdout-1443651354887.txt","computername":"OWNEROR-U9TA398","pid":2728,"type":"stdout","created":1443651354887},{"file":"OWNEROR-U9TA398-3164-stdout-1443629828634.txt","computername":"OWNEROR-U9TA398","pid":3164,"type":"stdout","created":1443629828634},{"file":"OWNEROR-U9TA398-3228-stdout-1443641845539.txt","computername":"OWNEROR-U9TA398","pid":3228,"type":"stdout","created":1443641845539},{"file":"OWNEROR-U9TA398-3236-stdout-1443626161771.txt","computername":"OWNEROR-U9TA398","pid":3236,"type":"stdout","created":1443626161771},{"file":"OWNEROR-U9TA398-3320-stdout-1443646611694.txt","computername":"OWNEROR-U9TA398","pid":3320,"type":"stdout","created":1443646611694},{"file":"OWNEROR-U9TA398-3488-stdout-1443640284335.txt","computername":"OWNEROR-U9TA398","pid":3488,"type":"stdout","created":1443640284335},{"file":"OWNEROR-U9TA398-3512-stdout-1443623336399.txt","computername":"OWNEROR-U9TA398","pid":3512,"type":"stdout","created":1443623336399},{"file":"OWNEROR-U9TA398-3524-stdout-1443651467460.txt","computername":"OWNEROR-U9TA398","pid":3524,"type":"stdout","created":1443651467460},{"file":"OWNEROR-U9TA398-3688-stdout-1443632390302.txt","computername":"OWNEROR-U9TA398","pid":3688,"type":"stdout","created":1443632390302},{"file":"OWNEROR-U9TA398-3760-stdout-1443646610832.txt","computername":"OWNEROR-U9TA398","pid":3760,"type":"stdout","created":1443646610832},{"file":"OWNEROR-U9TA398-3796-stdout-1443629705903.txt","computername":"OWNEROR-U9TA398","pid":3796,"type":"stdout","created":1443629705903},{"file":"OWNEROR-U9TA398-3876-stdout-1443632388146.txt","computername":"OWNEROR-U9TA398","pid":3876,"type":"stdout","created":1443632388146},{"file":"OWNEROR-U9TA398-4124-stdout-1443661967238.txt","computername":"OWNEROR-U9TA398","pid":4124,"type":"stdout","created":1443661967238},{"file":"OWNEROR-U9TA398-4456-stdout-1443641844838.txt","computername":"OWNEROR-U9TA398","pid":4456,"type":"stdout","created":1443641844838},{"file":"OWNEROR-U9TA398-4680-stdout-1443639942644.txt","computername":"OWNEROR-U9TA398","pid":4680,"type":"stdout","created":1443639942644},{"file":"OWNEROR-U9TA398-4908-stdout-1443640285560.txt","computername":"OWNEROR-U9TA398","pid":4908,"type":"stdout","created":1443640285560},{"file":"OWNEROR-U9TA398-5080-stdout-1443626336028.txt","computername":"OWNEROR-U9TA398","pid":5080,"type":"stdout","created":1443626336028},{"file":"OWNEROR-U9TA398-556-stdout-1443667922417.txt","computername":"OWNEROR-U9TA398","pid":556,"type":"stdout","created":1443667922417}];
+        var lastUpdated = 1443667922707;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

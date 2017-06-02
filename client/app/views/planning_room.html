@@ -1,0 +1,95 @@
+<!--<span ng-show="VisibleStep2" id="floorArea" aria-readonly="true">{{floorArea}}<sup>2</sup></span>-->
+<loading></loading>
+<!--<div class="row" ng-hide="VisibleStep5">
+    <div class="display-table" style="padding: 0 15px; min-height: 38px;">
+        <div class="title-views width40 v-align-middle">
+            <p ng-show="VisibleStep1">{{step1.caption}}</p>
+
+            <p ng-show="VisibleStep2">{{step2.caption}}</p>
+
+            <p ng-show="VisibleStep3">{{step3.caption}}</p>
+
+            <p ng-show="VisibleStep4">{{step4.caption}}</p>
+        </div>
+        <div ng-hide="VisibleStep1" class="width10 text-center">
+            <help-button ng-class="{animate:flipHelpBtn}" active-step="menuActiveStep"></help-button>
+        </div>
+    </div>
+</div>-->
+<!--<div class="row menu-horizontal hidden-xs">
+    <div class="col-sm-2 col-xs-2  menuHorizontalStyle" ng-repeat="step in menu">
+        <div class=" arrow bordLeft" ng-class="{'active-menu' : ($index === menuActiveStep)}"
+             ng-click="visibleSteppp(step.name, $index)">
+            <p style="padding: 0 0 0 30px; text-align: center;">{{($index+1)}}. {{step.name}}</p>
+
+        </div>
+    </div>
+</div>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">
+                <img src="assets/images/navbar_logo.png" srcset="/images/navbar_logo@2x.png 2x">
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li role="presentation" class="step" ng-class="{'active' : ($index === activeView)}"
+                    ng-click="visibleSteppp(step.name, $index)"
+            ng-repeat="step in menu">
+                <a action="push">{{step.name}}
+                <span class="step-number">{{$index+1}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li role="presentation">
+                <a role="button" ng-click="startNewProj()" class="narrow-menu-item"><i class="icon-new"></i></a>
+            </li>
+            <li role="presentation">
+                <a role="button" ng-click="visibleSteppp(1, 4)" class="narrow-menu-item"><i class="icon-save"></i></a>
+            </li>
+            <li role="presentation">
+                <a role="button" ng-click="visibleSteppp(1, 4)" class="narrow-menu-item"><i class="icon-cart"></i>
+                    <sup class="label label-warning cart-items-count">1</sup>
+                    &nbsp;
+                    <span>$ money</span>
+                </a>
+            </li>
+            <li>
+                <ng-include src="'views/login-label.html'"></ng-include>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<div class="row visible-xs">
+  <div class="col-md-12 col-xs-12 mobile-menu-progress">-->
+    <!-- Progress Tracker v2 -->
+    <!--<ol class="progress-steps" data-steps="1" >
+      <li ng-class="{'active' : ($index === menuActiveStep), 'done' : ($index < menuActiveStep)}" ng-repeat="step in menu">
+        <span class="step" ng-click="visibleSteppp(step.name, $index)"><span>{{($index+1)}}</span></span>
+      </li>
+    </ol>
+  </div>
+</div>-->
+
+<!--to nav bar not overlap stepContainer -->
+<div style="padding-bottom: 60px;"></div>
+
+<div style="height:98%;overflow:hidden;" class="stepContainer">
+
+    <product-details />
+
+    <step1 ng-show="VisibleStep1"></step1>
+    <step2 ng-show="VisibleStep2" style="display:block"></step2>
+    <step3 ng-show="VisibleStep3"></step3>
+    <step4 ng-show="VisibleStep4" flip-help-btn="flipHelpBtn" style="display:block"></step4>
+    <step5 ng-show="VisibleStep5"></step5>
+
+    <div ng-hide="VisibleStep1 || notStep"
+         ng-include="'views/bottomToolsBar.html'">
+    </div>
+</div>
+
+

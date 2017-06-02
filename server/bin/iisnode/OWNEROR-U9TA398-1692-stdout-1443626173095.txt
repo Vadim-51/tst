@@ -1,0 +1,3 @@
+[0mGET /robots.txt [32m200 [0m11.765 ms - 31[0m
+[0mGET /wp-login.php [33m404 [0m5.423 ms - 25[0m
+[0mGET /wp-login/ [33m404 [0m2.145 ms - 22[0m

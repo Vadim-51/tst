@@ -1,0 +1,32 @@
+﻿<form name="wallSizeForm" class="wallSizeDialog">
+    <table>
+        <tr>
+            <td>
+                Length:
+            </td>
+            <td>
+                <input type="text" class="sizeInput" name="wallLength"
+                       validation-tooltip-messages
+                       units-validator 
+                       ng-model="selectedWallLength"
+                       ng-keypress="applyNewLength($event)">
+            </td>
+        </tr>
+        <!--<tr>
+            <td>
+                Depth:
+            </td>
+            <td>
+                <input type="text"
+                       validation-tooltip-messages
+                       wall-width-validator  units-validator
+                       ng-model="selectedWallWidth"
+                       ng-keydown="pressTab($event)"
+                       ng-keypress="applyNewWidth($event)"
+                       name="wallWidth"
+                       class="sizeInput" />
+            </td>
+        </tr>-->
+    </table>
+</form>
+

@@ -1,0 +1,121 @@
+<div>
+    <button ng-click="clearForm();">Add new Color scheme</button>
+    <button type="button" ng-show="!formVisible" ng-click="setFormVisible(true)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    <button type="button" ng-show="formVisible" ng-click="setFormVisible(false)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+    <br>
+    <br>
+    <form ng-show="formVisible">
+
+        <fieldset>
+            <label>Color scheme name</label>
+            <input type="text" ng-model="currentColorScheme.colorSchemeName">
+        </fieldset>
+
+        <fieldset>
+            <label>Stain</label>
+            <input type="text" ng-model="currentColorScheme.stain">
+        </fieldset>
+
+        <fieldset>
+            <label>Laquer</label>
+            <input type="checkbox" ng-model="currentColorScheme.laquer">
+        </fieldset>
+
+        <fieldset>
+            <label>Materials</label>
+            <div ng-repeat="mt in currentColorScheme.materials track by $index">
+                {{mt.materialName}}
+                <button type="button" title="Edit material" ng-click="editMaterial(mt);">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+                <button type="button" title="Delete material" ng-click="deleteMaterial($index);">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+
+            <fieldset>
+                <label>Material name</label>
+                <input type="text" ng-model="newMaterial.materialName">
+            </fieldset>
+
+            <fieldset>
+                <label>Color</label>
+                <input colorpicker ng-model="newMaterial.color" type="text">
+            </fieldset>
+
+            <fieldset>
+                <label>Texture</label>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="text-align: center;">
+                        <button ngf-select="addFilesForUpload($file, 'map', '/images/materialList/model/')" multiple accept="image/*">Select image</button>
+                    </div>
+                    <div ng-show="newMaterial.map" style="text-align: center;">
+                        <img style="max-width: 100%;" ng-src="{{newMaterial.map}}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!--<fieldset>
+                <h3>Map settings</h3>
+                <label>WrapS</label>
+                <select name="objectGroupSelect" ng-model="searchIsGeneric">
+                    <option value="THREE.RepeatWrapping">Repeat Wrapping</option>
+                    <option value="THREE.ClampToEdgeWrapping">Clamp To Edge Wrapping</option>
+                    <option value="THREE.MirroredRepeatWrapping">Mirrored Repeat Wrapping</option>
+                </select>
+                <label>WrapT</label>
+                <select name="objectGroupSelect" ng-model="searchIsGeneric">
+                    <option value="THREE.RepeatWrapping">Repeat Wrapping</option>
+                    <option value="THREE.ClampToEdgeWrapping">Clamp To Edge Wrapping</option>
+                    <option value="THREE.MirroredRepeatWrapping">Mirrored Repeat Wrapping</option>
+            </select>
+            </fieldset>-->
+
+            <button ng-click="addMaterial($index);">{{materialCaption}}</button>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <label>Product details and shopping list image</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'productDetailsImage', '/images/colors/')" multiple accept="image/*">Select image</button>
+                </div>
+                <div ng-show="currentColorScheme.productDetailsImage" style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentColorScheme.productDetailsImage}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Color schemes right menu image</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'colorSchemeImage', '/images/materialList/vigilant/')" multiple accept="image/*">Select image</button>
+                </div>
+                <div ng-show="currentColorScheme.colorSchemeImage" style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentColorScheme.colorSchemeImage}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <button ng-click="publishColorScheme();">{{caption}}</button>
+    </form>
+    <br>
+
+    <div ng-repeat="cs in colorSchemes">
+
+        {{cs.colorSchemeName}} {{cs.stain}} {{cs.laquer && 'laquer' || 'no laquer'}}
+        <button type="button" title="Edit color scheme" ng-click="editColorScheme(cs);">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" title="Delete color scheme" ng-click="deleteColorScheme(cs);">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+
+</div>

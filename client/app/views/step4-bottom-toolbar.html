@@ -1,0 +1,30 @@
+﻿<div class="display-table step-4-bottom-toolbar">
+    <div>
+        <img data-toggle="tooltip" data-placement="top" title="Zoom Out" alt="Zoom Out"
+             ng-click="zoom(-1)" src="images/tools/zoom_out.png" />
+    </div>
+    <div>
+        <img data-toggle="tooltip" data-placement="top" title="Zoom In" alt="Zoom In" class="zoomIn"
+            ng-click="zoom(1)" src="images/tools/zoom_in.png" />
+    </div>
+    <div ng-hide="isInWallMode">
+        <img data-toggle="tooltip" data-placement="top" title="Fit Screen" alt="Fit Screen" class=""
+             ng-click="center()" src="images/tools/FitToScreen.png" />
+    </div>
+    <div>
+        <screenshot-button dropup="true" step="4" />
+    </div>
+    <div>
+        <img src="/assets/icons/icon-blueprint.svg" ng-click="visibleSteppp(1, 2)" alt="Blueprint view">
+    </div>
+    <div>
+        <img src="/assets/icons/icon-top2d.svg" ng-click="visibleSteppp(1, 2)" alt="Top 2D view">
+    </div>
+    <div>
+        <img src="/assets/icons/icon-top3d.svg" ng-click="visibleSteppp(1, 3)" alt="Top 3D view">
+    </div>
+    <div>
+        <img src="/assets/icons/icon-3d.svg" ng-click="visibleSteppp(1, 3)" alt="3D view">
+    </div>
+    
+</div>

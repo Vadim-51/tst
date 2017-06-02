@@ -1,0 +1,58 @@
+<loading></loading>
+<div id="user-account" class="row">
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="row">
+      <div class="col-md-12">
+        <img style="max-width: 100%;" src="images/auth/user_img.png"/>
+      </div>
+      <div class="col-md-12">
+        <p class="user_name"> {{labelUserLogged}}</p>
+      </div>
+      <div class="col-md-12" style="padding: 0;">
+        <div ng-click="resetUserDataIfNotSave()" class="btn btn-default projects-tab" data-target="#rooms" aria-controls="rooms" role="tab"
+             data-toggle="tab"> <img style="width: 24px; margin-right: 9px" src="images/img_projects.png"/>Project rooms
+        </div>
+        <div ng-click="resetUserDataIfNotSave()" class="btn btn-default projects-tab " data-target="#user-profile" aria-controls="user-profile" role="tab"
+             data-toggle="tab"> <img style="width: 24px; margin-right: 9px" src="images/Very-Basic-Settings-icon.png"/>Change Profile
+        </div>
+        <div ng-click="resetUserDataIfNotSave()" class="btn btn-default projects-tab " data-target="#project-settings" aria-controls="project-settings" role="tab"
+             data-toggle="tab"> <img style="width: 24px; margin-right: 9px" src="images/Very-Basic-Settings-icon.png"/>Project Settings
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-12 room-project">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="rooms">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-5"><h3 class="alignleft">Vigilant Projects</h3></div>
+          <div class="col-md-8 col-sm-8 col-xs-7">
+            <div>
+              <ol class="breadcrumb" style="margin: 20px 0 10px 0; padding: 0;background: transparent; float: right;">
+                <li> <a ng-href="#/planning" style="font-size: 18px;">Start New Project</a></li>
+                <li><a ng-click="goBackToProject()" ng-class="!activeLinkToBack ? 'disabled-anhor': 'active-anhor'" style="font-size: 18px;">Go Back to Project</a></li>
+              </ol>
+            <!--<a ng-href="#/planning"><h5 style="text-align: right;float: left;">Start New Project</h5></a>-->
+            <!--<a ng-click="goBackToProject()"><h5 style="text-align: right;float: left;">Go Back to Project</h5></a>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-include="'views/auth/ProjectRoomList.html'"></div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="user-profile">
+        <div class="row" ng-init="form={}">
+          <ng-include src="'views/auth/profile.html'"></ng-include>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="project-settings">
+        <div class="row" ng-init="form={}">
+          <ng-include src="'views/auth/project-settings.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

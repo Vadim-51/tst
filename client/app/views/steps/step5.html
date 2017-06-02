@@ -1,0 +1,253 @@
+<div ng-show="VisibleStep5" class="row tab-control" ng-init="active_project = false; active_SPL = true">
+    <!-- Nav tabs -->
+    <div class="display-table" style="padding: 0 15px">
+        <div style="width: 90%; display: table-cell; text-align: center;">
+            <div ng-class="active_SPL ? 'active-tab': ''" ng-click="active_project = false; active_SPL = true"
+                 class="tab-btn" data-target="#shopping-list" aria-controls="shopping-list" role="tab"
+                 data-toggle="tab">
+                Shopping List
+            </div>
+            <div ng-class="active_project ? 'active-tab': ''" ng-click="active_project = true; active_SPL = false"
+                 class="tab-btn" data-target="#project-details" aria-controls="project-details" role="tab"
+                 data-toggle="tab">
+                Project Details
+            </div>
+            <div class="tab-btn" ng-show="VisibleStep5" ng-click="checkSaveProperties()">
+                    Save project
+                <!--</button>-->
+            </div>
+        </div>
+        <div style="width: 10%; display: table-cell; vertical-align: middle;">
+            <div class="text-center">
+                <help-button active-step="menuActiveStep"></help-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="shoppingList" class="col-md-12 col-sm-12 col-xs-12 animate-show">
+    <!-- <step-tooltip step="5" key="step5ToolTip">
+        Register to save and share your Vigilant project.
+    </step-tooltip> -->
+    <!-- Tab panes -->
+    <!--<div class="col-md-12 col-sm-12 col-xs-12">-->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" ng-class="{'active flexible-proj': active_project}" id="project-details">
+
+
+            <div class="row border project-wrapper">
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <label class="input-label">Project Details</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon project-details-input">Project Name</span>
+                                <input type="text" ng-model="projectDetails.title" class="form-control project-details-input">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon project-details-input">Linear</span>
+                                <input type="text" class="form-control project-details-input" 
+                                    disabled="true" ng-model="projectData.LinearLength">
+
+                                <div class="input-group-addon">
+                                    <span class="span-hover" ng-class="{'unit_border':dataUnitFT, 'unit-grey':!dataUnitFT}" ng-click="SPLchangeUnit('FT')">ft<sup>2</sup></span>
+                                    <span class="span-hover" ng-class="{'unit_border':dataUnitM, 'unit-grey':!dataUnitM}" ng-click="SPLchangeUnit('M')">/m<sup>2</sup></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon project-details-input">No. of Walls</span>
+                                <input type="text" class="form-control project-details-input" disabled="true" ng-model="projectData.countWall">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon project-details-input">Floor Area</span>
+                                <input type="text" class="form-control project-details-input" disabled="true" ng-model="projectData.FloorArea">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon project-details-input">Wall Area</span>
+                                <input type="text" class="form-control project-details-input" disabled="true" ng-model="projectData.WallArea">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-xs-12">
+                            <label class="input-label">Address</label>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.address.clientName" placeholder="Name" 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.address.street" placeholder="Street, house number" 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.address.city" placeholder="City, state, zip" 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-xs-12">
+                            <label class="input-label">Contact Details</label>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.contact.email" placeholder="Email" 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.contact.tel" placeholder="Tel." 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="projectDetails.contact.mobile" placeholder="Mobile" 
+                                            class="form-control project-details-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row border" id="viewer3d-wrapper">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <!--visible tab button for mobile device-->
+                    <div class="visible-xs tab-control" ng-init="active_3dViewer = true; active_wallSize = false">
+                        <div ng-class="active_3dViewer ? 'active-tab': ''" ng-click="active_3dViewer = true; active_wallSize = false"
+                             style="width: 100%;" class="tab-btn" data-target="#3D-viewer" aria-controls="3D-viewer"
+                             role="tab" data-toggle="tab">
+                            3D-Viewer
+                        </div>
+
+                        <div ng-class="active_wallSize ? 'active-tab': ''" ng-click="active_3dViewer = false; active_wallSize = true"
+                             style="width: 100%; margin: 5px 0 15px 0" class="tab-btn" data-target="#wall-dimensions"
+                             aria-controls="wall-dimensions" role="tab" data-toggle="tab">
+                            Wall Sizes
+                        </div>
+                    </div>
+                    <!--Hidden table with wall dimensions for mobile device-->
+                    <div class="hidden-xs">
+
+                        <div class="display-table" style="margin:5px 0 5px 5px">
+                            <div class="width80" style="padding-left: 10px;">
+                                <wall-id-check-box />
+                            </div>
+                        </div>
+
+                        <div class="wall_header ">
+                            <label class="fontSize1-4vw">
+                                Length - ( <span ng-class="{'unit_border':dataUnitFT}"
+                                                 ng-click="SPLchangeUnit('FT')">ft' in''</span>
+                                , <span ng-class="{'unit_border':dataUnitM}" ng-click="SPLchangeUnit('CM')">cm</span>)
+                            </label>
+                        </div>
+                        <table ng-show="dataUnitFT" class="table-content table table-bordered">
+                            <tbody>
+                                <tr ftin width="{{wall.width - 10.16 * wall.innerAngleLess180}}" wallname="{{wall.name}}"
+                                    wallnumber="{{$index + 1}}" ng-repeat="wall in wallArray"></tr>
+                            </tbody>
+                        </table>
+                        <table ng-show="dataUnitM" class="table-content table table-bordered">
+                            <tbody>
+                                <tr ng-repeat="wall in wallArray">
+                                    <td class="wallLink" ng-click="focusOnWall($index + 1)">Wall #{{$index + 1}}</td>
+                                    <!--<td><input disabled="true" type="number" ng-model="wall.width - 10.16 * wall.innerAngleLess180"></td>-->
+                                    <td> {{(wall.width - 10.16 * wall.innerAngleLess180).toFixed(2)}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 borderLeft margin-none project-details-content">
+                    <div class="tab-content project-details-content">
+                        <div role="tabpanel" class="tab-pane active project-details-content" id="3D-viewer">
+                            <!--<scene3d class="no-canvas-border" associated-step-index="5"></scene3d>-->
+                            <webgl step="step5"></webgl>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="wall-dimensions">
+                            <div class="visible-xs">
+
+                                <div class="display-table">
+                                    <div class="width90" style="padding-left: 10px;">
+                                        <wall-id-check-box />
+                                    </div>
+                                </div>
+
+                                <div class="wall_header ">
+                                    <label class="fontSize1-4vw">
+                                        Length - ( <span ng-class="{'unit_border':dataUnitFT}"
+                                                         ng-click="SPLchangeUnit('FT')">ft' in''</span>
+                                        , <span ng-class="{'unit_border':dataUnitM}" ng-click="SPLchangeUnit('CM')">cm</span>)
+                                    </label>
+                                </div>
+                                <table ng-show="dataUnitFT" class="table-content table table-bordered">
+                                    <tbody>
+                                    <tr ftin width="{{wall.width - 10.16 * wall.innerAngleLess180}}" wallname="{{wall.name}}"
+                                        wallnumber="{{$index + 1}}" ng-repeat="wall in wallArray"></tr>
+                                    </tbody>
+                                </table>
+                                <table ng-show="dataUnitM" class="table-content table table-bordered">
+                                    <tbody>
+                                    <tr ng-repeat="wall in wallArray">
+                                        <td class="wallLink" ng-click="focusOnWall($index + 1)">Wall #{{$index + 1}}</td>
+                                        <!--<td><input disabled="true" type="number" ng-model="wall.width - 10.16 * wall.innerAngleLess180"></td>-->
+                                        <td> {{(wall.width - 10.16 * wall.innerAngleLess180).toFixed(2)}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" ng-class="{'active': active_SPL}" id="shopping-list">
+            <!--<button class="createPDF" ng-click="createPDF()">Preview to save</button>-->
+            <shopping-list count="notEmpty" total="totalPrice" save = "saveCurrentState(stepObj)"></shopping-list>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<!--<div ng-include="'views/previewSPL.html'"></div>-->

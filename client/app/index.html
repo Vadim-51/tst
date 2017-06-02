@@ -1,0 +1,340 @@
+﻿<!doctype html>
+<html lang="en-US" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vigilant</title>
+    <meta name="description" content="">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=device-dpi">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-table/src/bootstrap-table.css" />
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fixedStyles.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="styles/datetimepicker.css">
+    <!--<script type="text/javascript" src="http://www.google.com/jsapi"></script>-->
+    <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
+    <script type="text/javascript" src='https://www.google.com/jsapi?autoload={
+        "modules":[{
+        "name":"visualization",
+        "version":"1",
+        "packages":["corechart", "table", "geochart"]
+        }]
+      }'></script>
+
+</head>
+
+<body ng-app="vigilantApp" activity-tracker>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!--<div class="container height80">-->
+    <!--<div class="inline-row" ng-if="!loginPage">
+            <ng-include src="'views/login-label.html'"></ng-include>
+        </div>-->
+    <div ng-view=""></div>
+    <!--</div>-->
+    <!--<div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p> <a href="https://www.interiordesigntools.com/contact-us/" target="_blank">ViewIT Technologies</a> </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-92599600-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- Step 2: Load the library. -->
+    <script>
+        (function (w, d, s, g, js, fjs) {
+            g = w.gapi || (w.gapi = {}); g.analytics = { q: [], ready: function (cb) { this.q.push(cb) } };
+            js = d.createElement(s); fjs = d.getElementsByTagName(s)[0];
+            js.src = 'https://apis.google.com/js/platform.js';
+            fjs.parentNode.insertBefore(js, fjs); js.onload = function () { g.load('analytics') };
+        }(window, document, 'script'));
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
+    <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.js"></script>
+    <script src="bower_components/angular-bootstrap-slider/slider.js"></script>
+    <script src="bower_components/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="bower_components/device.js/lib/device.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <script src="bower_components/crypto-js/src/core.js"></script>
+    <script src="bower_components/crypto-js/src/sha1.js"></script>
+    <script src="bower_components/crypto-js/src/hmac.js"></script>
+    <script src="bower_components/crypto-js/src/pbkdf2.js"></script>
+    
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/Classes/ShoppingList.js"></script>
+
+    <script src="scripts/component/EventDispatch.js"></script>
+    <script src="scripts/component/ComponentBase.js"></script>
+    <script src="scripts/component/Engine.js"></script>
+    <script src="scripts/component/DependencyContainer.js"></script>
+    <script src="scripts/component/TouchAndMouseMap.js"></script>
+
+    <!--<script src="scripts/component/2D/Drag2D.js"></script>
+    <script src="scripts/component/2D/DragWindow2d.js"></script>
+    <script src="scripts/component/2D/DragCabinet2D.js"></script>-->
+
+    <script src="scripts/component/2D/Drag/Drag2D.js"></script>
+    <script src="scripts/component/2D/Drag/Handlers/Floor2DObjectDrag.js"></script>
+    <script src="scripts/component/2D/Drag/Handlers/WallEmbeddable2DHandler.js"></script>
+
+    <script src="scripts/component/2D/Selection2D.js"></script>
+    <script src="scripts/component/2D/MoveCamera.js"></script>
+    <script src="scripts/component/2D/ZoomCamera.js"></script>
+    <script src="scripts/component/2D/ShowSizesOnFloorClick.js"></script>
+    <script src="scripts/component/2D/ConnectionPointHover.js"></script>
+    <script src="scripts/component/2D/WallLengthChangeBase.js"></script>
+    <script src="scripts/component/2D/WallNodeBase.js"></script>
+    <script src="scripts/component/2D/MoveCorner.js"></script>
+    <script src="scripts/component/2D/MoveWall.js"></script>
+    <script src="scripts/component/2D/DrawCustomRoom.js"></script>
+    <script src="scripts/component/2D/WallHighlight.js"></script>
+    <script src="scripts/component/2D/SplitWall.js"></script>
+    <script src="scripts/component/2D/RemoveNode.js"></script>
+
+    <script src="scripts/component/3D/Drag/Handler/DragHandlerBase.js"></script>
+    <script src="scripts/component/3D/Drag/Handler/AxisDragHandler.js"></script>
+    <script src="scripts/component/3D/Drag/Handler/SnapHandler.js"></script>
+    <script src="scripts/component/3D/Drag/Handler/WallObjectSmartDrag.js"></script>
+    <script src="scripts/component/3D/Drag/Handler/FloorObjectSmartDrag.js"></script>
+
+    <script src="scripts/component/3D/Drag/Class/VerticalOffsetValidator.js"></script>
+    <script src="scripts/component/3D/Drag/Class/ObjectInWallRange.js"></script>
+    <script src="scripts/component/3D/Drag/Class/ObjectInsideRoom.js"></script>
+    <script src="scripts/component/3D/Drag/Class/CollideChecker.js"></script>
+    <script src="scripts/component/3D/Drag/Class/WallContainObject.js"></script>
+    <script src="scripts/component/3D/Drag/Class/ObjectInWallRangev2.js"></script>
+    <script src="scripts/component/3D/Drag/Behavior/DragBehaviorBase.js"></script>
+    <script src="scripts/component/3D/Drag/Behavior/FloorObjectDrag.js"></script>
+    <script src="scripts/component/3D/Drag/Behavior/WallObjectDrag.js"></script>
+    <script src="scripts/component/3D/Drag/Behavior/WallMountObjectDrag.js"></script>
+
+    <script src="scripts/component/3D/Select3D.js"></script>
+    <script src="scripts/component/3D/Drag/Drag3D.js"></script>
+    <script src="scripts/component/3D/HideLookBlockWalls.js"></script>
+    <script src="scripts/component/3D/WallNumbersUpdate.js"></script>
+    <script src="scripts/component/3D/WallView.js"></script>
+    <script src="scripts/component/3D/ObjectControls/ObjectControls.js"></script>
+    <script src="scripts/component/3D/ObjectControls/ObjectControlsHandlerBase.js"></script>
+    <script src="scripts/component/3D/ObjectControls/RotateHandlerBase.js"></script>
+    <script src="scripts/component/3D/ObjectControls/ClockwiseRotateHandler.js"></script>
+    <script src="scripts/component/3D/ObjectControls/CounterClockwiseRotateHandler.js"></script>
+
+    <script src="scripts/component/3D/ObjectAdd/AddObjectHandlerBase.js"></script>
+    <script src="scripts/component/3D/ObjectAdd/FloorObjectHandler.js"></script>
+    <script src="scripts/component/3D/ObjectAdd/WallObjectHandlerBase.js"></script>
+    <script src="scripts/component/3D/ObjectAdd/WallEmbeddableObjectHandler.js"></script>
+    <script src="scripts/component/3D/ObjectAdd/WallMountObjectHandler.js"></script>
+    <script src="scripts/component/3D/ObjectAdd/ObjectAdd.js"></script>
+
+    <script src="scripts/component/3D/ObjectControls/DeleteHandler.js"></script>
+    <script src="scripts/component/3D/ObjectControls/CloneHandler.js"></script>
+    <script src="scripts/component/3D/ObjectControls/InfoHandler.js"></script>
+
+    <script src="scripts/component/Shared/ObjectDimensions.js"></script>
+
+    <script src="scripts/libs/Detector.js"></script>
+    <script src="scripts/libs/three.js"></script>
+    <!--<script src="https://cdn.rawgit.com/zz85/zz85-bookmarklets/master/js/ThreeInspector.js"></script>-->
+    <script src="scripts/libs/BinaryLoader.js"></script>
+    <script src="scripts/libs/ThreeCSG.js"></script>
+    <script src="scripts/libs/OrbitControls.js"></script>
+    <script src="scripts/libs/datetimepicker.js"></script>
+    <script src="scripts/libs/datetimepicker.templates.js"></script>
+    <script src="scripts/libs/dateTimeInput.js"></script>
+    <script src="scripts/libs/OBB.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/controllers/adminControler.js"></script>
+    <script src="scripts/controllers/modelPublishController.js"></script>
+    <script src="scripts/controllers/materialPublishController.js"></script>
+    <script src="scripts/controllers/suitePublishController.js"></script>
+    <script src="scripts/controllers/colorSchemePublishController.js"></script>
+    <script src="scripts/controllers/productDetailsDialog.js"></script>
+    <script src="scripts/controllers/leftMenuPublishController.js"></script>
+
+
+    <script src="scripts/services/scene3D.js"></script>
+    <script src="scripts/services/roomStuff.js"></script>
+    <script src="scripts/services/material/materialStuff.js"></script>
+    <script src="scripts/services/roomStuffFactory.js"></script>
+    <script src="scripts/services/step3Helper.js"></script>
+    <script src="scripts/services/modelLoader.js"></script>
+    <script src="scripts/services/servicesAuth.js"></script>
+    <script src="scripts/services/geometryHelper.js"></script>
+    <script src="scripts/services/sceneHelper.js"></script>
+    <script src="scripts/services/wallVisibilityManager.js"></script>
+    <script src="scripts/services/roomBuilder.js"></script>
+    <script src="scripts/services/constants.js"></script>
+    <script src="scripts/services/roomStateManager.js"></script>
+    <script src="scripts/services/socialShare.js"></script>
+    <script src="scripts/services/wall3DDataManager.js"></script>
+    <script src="scripts/services/screenShotStoreSrvc.js"></script>
+    <script src="scripts/services/shoppingList-service.js"></script>
+    <script src="scripts/services/sendingLog.js"></script>
+    <script src="scripts/services/googleAnalitycs.js"></script>
+    <script src="scripts/services/resourceCache.js"></script>
+    <script src="scripts/services/resourceLoader.js"></script>
+    <script src="scripts/services/material/materialBuilder.js"></script>
+    <script src="scripts/services/material/objectMaterial.js"></script>
+    <script src="scripts/services/material/materialSelector.js"></script>
+    <script src="scripts/services/material/materialConfigManager.js"></script>
+    <script src="scripts/services/keyState.js"></script>
+    <script src="scripts/services/object3DSelectionBox.js"></script>
+    <script src="scripts/services/engine2DSrvc.js"></script>
+    <script src="scripts/services/collision/collisionSrvc.js"></script>
+    <script src="scripts/services/screenShotPreprocess.js"></script>
+    <script src="scripts/services/collision/obbBuilder.js"></script>
+    <script src="scripts/services/orbitControl.js"></script>
+    <script src="scripts/services/objectGapHelperSrvc.js"></script>
+    <script src="scripts/services/engine3DSrvc.js"></script>
+    <script src="scripts/services/scene2DSyncSrvc.js"></script>
+    <script src="scripts/services/wallCutHelper.js"></script>
+    <script src="scripts/services/roomSizeManager.js"></script>
+    <script src="scripts/services/printService.js"></script>
+    <script src="scripts/services/saveStateService.js"></script>
+    <script src="scripts/services/scaleService.js"></script>
+    <script src="scripts/services/room2DBuilder.js"></script>
+    <script src="scripts/services/helperLines.js"></script>
+    <script src="scripts/services/wallConnectionSrvc.js"></script>
+    <script src="scripts/services/sizeHelper.js"></script>
+    <script src="scripts/services/dimensionalRadialsManager.js"></script>
+    <script src="scripts/services/objectControls.js"></script>
+    <script src="scripts/services/sceneSyncSrvc.js"></script>
+    <script src="scripts/services/objectCheckerSrvc.js"></script>
+    <script src="scripts/services/object3DCloneSrvc.js"></script>
+    <script src="scripts/services/wallNumberSrvc.js"></script>
+    <script src="scripts/services/scene3DScreenshotSrvc.js"></script>
+    <script src="scripts/services/objects2DSerializer.js"></script>
+    <script src="scripts/services/cursorBuilder.js"></script>
+    <script src="scripts/services/productDetailDialogSrvc.js"></script>
+    <script src="scripts/services/object3DPositionHistory.js"></script>
+    <script src="scripts/services/rayHelper.js"></script>
+    <script src="scripts/services/core/cameraManager.js"></script>
+    <script src="scripts/services/core/stage.js"></script>
+    <script src="scripts/services/core/engine.js"></script>
+    <script src="scripts/services/floorManager.js"></script>
+    <script src="scripts/services/wallManager.js"></script>
+    <script src="scripts/services/model3D.js"></script>
+    <script src="scripts/services/fitRoom.js"></script>
+    <script src="scripts/services/sceneStepBindings.js"></script>
+    <script src="scripts/services/wallCutSrvc.js"></script>
+    <script src="scripts/services/wallHoles.js"></script>
+    <script src="scripts/services/core/rendererSrvc.js"></script>
+    <script src="scripts/services/sceneUtils.js"></script>
+    <script src="scripts/services/objectDimensions.js"></script>
+    <script src="scripts/services/imageUtils.js"></script>
+    <script src="scripts/appSettings.js"></script>
+    <script src="scripts/services/wallHelper.js"></script>
+    <script src="scripts/services/material/defaultMaterialSetter.js"></script>
+    <script src="scripts/services/material/floorMaterialStepSwitcher.js"></script>
+
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/signIn.signUp.js"></script>
+    <script src="scripts/controllers/ForgotPass.js"></script>
+    <script src="scripts/directives/step1.js"></script>
+    <script src="scripts/directives/step2.js"></script>
+    <script src="scripts/directives/ftin.js"></script>
+    <script src="scripts/directives/step3.js"></script>
+    <script src="scripts/services/scene2d.js"></script>
+    <script src="scripts/directives/webgl.js"></script>
+    <script src="scripts/directives/sliderarrow.js"></script>
+    <script src="scripts/directives/step4.js"></script>
+    <script src="scripts/directives/step5.js"></script>
+    <script src="scripts/directives/scene3d.js"></script>
+    <script src="scripts/directives/helpButton.js"></script>
+    <script src="scripts/directives/customSlider.js"></script>
+    <script src="scripts/directives/stepTooltip.js"></script>
+    <script src="scripts/directives/preloader.js"></script>
+    <script src="scripts/directives/wallIdCheckBox.js"></script>
+    <script src="scripts/directives/groupItemsCheckBox.js"></script>
+    <script src="scripts/directives/snappingCheckBox.js"></script>
+    <script src="scripts/directives/undoButton.js"></script>
+    <script src="scripts/directives/screenshot-button.js"></script>
+    <script src="scripts/directives/wall-scroll.js"></script>
+    <script src="scripts/directives/step4-bottom-toolbar.js"></script>
+    <script src="scripts/directives/shopping-list.js"></script>
+    <script src="scripts/directives/action-stepToolTip.js"></script>
+    <script src="scripts/directives/activityTracker.js"></script>
+    <script src="scripts/directives/materialList/materialList.js"></script>
+    <script src="scripts/directives/duplicate3DObject/duplicate3DObject.js"></script>
+    <script src="scripts/directives/align3DObject/align3DObject.js"></script>
+    <script src="scripts/directives/wallSizeDialog.js"></script>
+    <script src="scripts/directives/splitWallButton.js"></script>
+    <script src="scripts/validators/unitsValidator.js"></script>
+    <script src="scripts/validators/wallWidthValidator.js"></script>
+    <script src="scripts/directives/validationTooltipMessages.js"></script>
+    <script src="scripts/directives/deleteNodeButton.js"></script>
+    <script src="scripts/directives/changeViewPanel.js"></script>
+    <script src="scripts/directives/pressEnter.js"></script>
+    <script src="scripts/directives/scrollToTop.js"></script>
+    <script src="scripts/directives/product-list-new/productsListNew.js"></script>
+    <script src="scripts/directives/zoom-control/zoomControl.js"></script>
+    <script src="scripts/directives/switch-view-control/switchViewControl.js"></script>
+    <script src="scripts/directives/fullScreenButton.js"></script>
+    <script src="scripts/directives/cameraNavControl/cameraNavControl.js"></script>
+    <script src="scripts/directives/sizeUnitButton/sizeUnitButton.js"></script>
+    <script src="scripts/directives/productDetails/productDetails.js"></script>
+    <script src="scripts/directives/deleteObjectButton.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+.nav .narrow-menu-item{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+a#user-actions-dropdown{
+  display: inline-block;
+}
+a#user-actions-dropdown :hover{
+  text-decoration: none !important;
+}
+.login-label{
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.layouts{
+    max-height: 373px;
+    overflow-y: auto;
+}
+.login-anchor{
+    font-size: 16px;
+}
+.aligned-center{
+    text-align: center;
+}
+.layout-activated{
+    background: rgba(195, 219, 251, 0.2);
+    border: 2px solid #81B3E0;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.form-control{
+    box-shadow: none;
+    border-radius: 0;
+}
+.form-control:focus{
+    border-color: rgba(151, 151, 151, 0.34902);;
+    box-shadow: none;
+}

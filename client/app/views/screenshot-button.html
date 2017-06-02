@@ -1,0 +1,11 @@
+﻿<div class="btn-group" ng-class="{'dropup':dropup}">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+        <span class="glyphicon glyphicon-camera" style="font-size: 1.5em"></span>
+        <span class="caret" style="vertical-align: super;margin-left: 3px;"></span>
+    </button>
+    <ul class="dropdown-menu" ng-class="{'dropdown-menu-right':menuRight}">
+        <li><a ng-click="takeScreenshot()">Take screenshot</a></li>
+        <li><a ng-click="viewScreenshots()">View screenshots</a></li>
+    </ul>
+</div>

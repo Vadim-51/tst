@@ -1,0 +1,106 @@
+<h1 ng-if="isCEG">{{product.color_scheme[0].mahagony.sku}}</h1>
+<h1 ng-if="!isCEG" class="generic-item-header">{{product.base_model_name || product.left_menu_alias}} 
+    "place-holder" Template</h1>
+
+<div class="Row">
+    <div class="Column">
+        <img class="img-prod-details" ng-src="{{product.img || product.productImage}}" />
+    </div>
+    <div class="Column">
+        <h3>Configure Your Product</h3>
+        Customize your product by selecting different attributes below. 
+        <span ng-if="isCEG">Price, images and product code will update as you select.</span>
+        <div ng-if="product.color_scheme.length > 0">
+            <div class="block-name">
+                Color
+            </div>
+            <div class="Row">
+                <div class="Column" ng-repeat="color in product.color_scheme" ng-click="changeColor(color);">
+                    <img class="img-swap" ng-src="/images/colors/{{color}}.png" ng-class="{'img-active':isActiveColor(color)}" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="block-name" ng-if="swapGroupProducts.length">
+                Configuration
+            </div>
+            <div class="swap-row">
+                <div class="swap-column" ng-repeat="swap in swapGroupProducts" ng-click="changeSwapProduct(swap);">
+                    <img class="img-swap" src="{{swap.swapImg}}" ng-class="{'img-active':isActiveSwapProduct(swap)}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Column">
+        <h3>Product Information</h3>
+        <span ng-if="!isCEG">Generic - {{product.base_model_name || product.left_menu_alias}} Template</span>
+        <span ng-if="isCEG">Product Code: {{product.color_scheme.mahagony.sku}}
+            <div class="msrp">
+                ${{product.msrp}}
+            </div>
+
+        Price with accessories: <span class="msrp-access">${{product.msrp}}</span>
+        <br>
+        <div class="cart-button">
+            Add to cart
+        </div>
+        </span>
+        <div class="button-row" ng-if="showButtons">
+            <div class="button-column button-update" ng-click="updateCanvas();">
+                Update Scene
+            </div>
+            <div class="button-column button-delete" ng-click="deleteModel();">
+                Delete
+            </div>
+        </div>
+        <div class="tab-row" ng-if="isCEG">
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Description');" ng-class="{'tab-selected':isActiveTab('Description')}">
+                Description
+            </div>
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Specifications');" ng-class="{'tab-selected':isActiveTab('Specifications')}">
+                Specifications
+            </div>
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Accessories');" ng-class="{'tab-selected':isActiveTab('Accessories')}">
+                Accessories
+            </div>
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Literature');" ng-class="{'tab-selected':isActiveTab('Literature')}">
+                Literature
+            </div>
+        </div>
+        <div ng-if="!isCEG" class="tab-row">
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Description');" ng-class="{'tab-selected':isActiveTab('Description')}">
+                Description
+            </div>
+            <div class="tab-column tab-not-selected" ng-click="selectTab('Dimensions');" ng-class="{'tab-selected':isActiveTab('Dimensions')}">
+                Dimensions
+            </div>
+        </div>
+        <div ng-if="isActiveTab('Description')">
+            {{product.description}}
+        </div>
+        <div ng-if="isActiveTab('Dimensions')" id="dimensions">
+            <label for="width" class="generic-dimensions-label">
+                <span class="generic-dimensions">Width:</span>
+                <input ng-if="product.wallInteraction" type="number" ng-model="dimensions.length" id="width" 
+                    class="generic-dimensions" ng-disabled="!mesh" min="0"/>
+                <input ng-if="!product.wallInteraction" type="number" ng-model="dimensions.width" id="width" 
+                    class="generic-dimensions" ng-disabled="!mesh" min="0"/>
+                in.
+            </label>
+            <label for="height" class="generic-dimensions-label">
+                <span class="generic-dimensions">Height:</span>
+                <input type="number" ng-model="dimensions.height" id="height" class="generic-dimensions"
+                    ng-disabled="!mesh" min="0"/>
+                in.
+            </label>
+            <label for="depth" class="generic-dimensions-label">
+                <span class="generic-dimensions">{{product.wallInteraction? "Depth:" : "Length"}}</span>
+                <input ng-if="product.wallInteraction" type="number" ng-model="dimensions.width" id="depth" 
+                    class="generic-dimensions" ng-disabled="!mesh" min="0"/>
+                <input ng-if="!product.wallInteraction" type="number" ng-model="dimensions.length" id="depth" 
+                    class="generic-dimensions" ng-disabled="!mesh" min="0"/>
+                in.
+            </label>
+        </div>
+    </div>
+</div>

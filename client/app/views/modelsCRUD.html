@@ -1,0 +1,436 @@
+<div>
+    <button ng-click="clearForm('Vigilant');">Add new Vigilant model</button>
+    <button ng-click="clearForm('generic');">Add new generic model</button>
+    <button type="button" ng-show="!formVisible" ng-click="setFormVisible(true)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    <button type="button" ng-show="formVisible" ng-click="setFormVisible(false)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+    <br>
+    <br>
+
+    <form ng-show="formVisible && objectType==='Vigilant'" name="modelForm" novalidate>
+
+        <fieldset>
+            <label>Description</label>
+            <input type="text" ng-model="currentModel.description">
+        </fieldset>
+
+        <fieldset>
+            <label>Left menu alias</label>
+            <select name="categorySelect" ng-model="currentModel.left_menu_alias" required>
+                <option ng-repeat="lma in leftMenuItems" value="{{lma.text}}">{{lma.text}}</option>
+            </select>
+            <p ng-show="modelForm.categorySelect.$invalid" style="color: red">
+                Required field.
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <label>Wall Interaction</label>
+            <select ng-model="currentModel.wallInteraction" required>
+                <option value="embeddable">embeddable</option>
+                <option value="mountable">mountable</option>
+                <option value=null>None</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label>Width</label>
+            <input type="number" ng-model="currentModel.width">
+        </fieldset>
+
+        <fieldset>
+            <label>Length</label>
+            <input type="number" ng-model="currentModel.length">
+        </fieldset>
+
+        <fieldset>
+            <label>Height</label>
+            <input type="number" ng-model="currentModel.height">
+        </fieldset>
+
+        <fieldset>
+            <label>Default height from floor</label>
+            <input type="number" ng-model="currentModel.defaultHeightFromFloor">
+        </fieldset>
+
+        <fieldset>
+            <label>lbs</label>
+            <input type="number" ng-model="currentModel.lbs">
+        </fieldset>
+
+        <fieldset>
+            <label>Shipping</label>
+            <input type="number" ng-model="currentModel.shipping">
+        </fieldset>
+
+        <fieldset>
+            <label>Total bottles</label>
+            <input type="number" ng-model="currentModel.total_bottles">
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <h3>Color schemes</h3>
+            <div>
+                <div>
+                    <h4>Mahagony</h4>
+                    <label>Lacquer</label>
+                    <input type="number" ng-model="currentModel.color_scheme.mahagony.lacquer">
+                    <label>SKU</label>
+                    <input type="text" ng-model="currentModel.color_scheme.mahagony.sku"> <br>
+                    <label>Stain unit</label>
+                    <input type="number" ng-model="currentModel.color_scheme.mahagony.stain_unit">
+                    <label>Unit price</label>
+                    <input type="number" ng-model="currentModel.color_scheme.mahagony.unit_price">
+                </div>
+                <div>
+                    <h3>Pine</h3>
+                    <label>Lacquer</label>
+                    <input type="number" ng-model="currentModel.color_scheme.pine.lacquer">
+                    <label>SKU</label>
+                    <input type="text" ng-model="currentModel.color_scheme.pine.sku"> <br>
+                    <label>Stain unit</label>
+                    <input type="number" ng-model="currentModel.color_scheme.pine.stain_unit">
+                    <label>Unit price</label>
+                    <input type="number" ng-model="currentModel.color_scheme.pine.unit_price">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <h4>Borders</h4>
+            <label>Wall</label>
+            <input type="number" ng-model="currentModel.borders.wall">
+            <label>Default</label>
+            <input type="number" ng-model="currentModel.borders.default">
+        </fieldset>
+
+        <fieldset>
+            <h4>Hotzones</h4>
+            <label>Wall</label>
+            <input type="number" ng-model="currentModel.hotzones.wall">
+        </fieldset>
+
+        <fieldset>
+            <label>Order number</label>
+            <input type="number" ng-model="currentModel.orderNumber">
+        </fieldset>
+
+        <fieldset>
+            <label>Visible on Vigilant?</label>
+            <input type="checkbox" ng-model="currentModel.visible">
+        </fieldset>
+
+        <fieldset>
+            <label>Disable auto-orientation?</label>
+            <input type="checkbox" ng-model="currentModel.disableAutoOrientation">
+        </fieldset>
+
+        <fieldset ng-show="!currentModel.wallInteraction">
+            <label>Default rotate degree</label>
+            <input type="number" ng-model="currentModel.defaultRotationDegree">
+        </fieldset>
+
+        <fieldset>
+            <label>Left menu thumbnail</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'LeftMenuThumbnails', currentModel._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.leftMenuImg}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Plan view image</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'PlanView', currentModel._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.sprite}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Product images</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'ProductImage', currentModel._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.productImg}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Shopping list images .PNG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'ShoppingList', currentModel._id)" multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.slImg}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Texture </label>
+            <div style="text-align: center;">
+                <button ngf-select="addFilesForUpload($file, 'Texture', currentModel._id)" multiple accept="image/*">Select image</button>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <div style="display: flex; flex-direction: column; width: 24%; margin-right: 5px" ng-repeat="textr in currentModel.texture">
+                    <img style="max-width: 100%;" ng-src="{{textr}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>.obj File</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, 'model', currentModel._id)" multiple accept="*">Select File</button>
+                </div>
+
+                <label>.mtl File</label>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="text-align: center;">
+                        <button ngf-select="addFilesForUpload($file, 'model', currentModel._id)" multiple accept="*">Select File</button>
+                    </div>
+        </fieldset>
+
+        <button class="btn btn-primary" ng-click="publishModel();">{{caption}}</button>
+    </form>
+    <form ng-show="formVisible && objectType==='generic'" name="modelForm" novalidate>
+
+        <fieldset>
+            <label>Name</label>
+            <input type="text" ng-model="currentModel.base_model_name">
+        </fieldset>
+
+        <fieldset>
+            <label>Decription</label>
+            <input type="text" ng-model="currentModel.description">
+        </fieldset>
+
+        <fieldset>
+            <label>Wall Interaction</label>
+            <select ng-model="currentModel.wallInteraction" required>
+                <option value="embeddable">embeddable</option>
+                <option value="mountable">mountable</option>
+                <option value=null>None</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label>Width</label>
+            <input type="number" ng-model="currentModel.width">
+        </fieldset>
+
+        <fieldset>
+            <label>Length</label>
+            <input type="number" ng-model="currentModel.length">
+        </fieldset>
+
+        <fieldset>
+            <label>Height</label>
+            <input type="number" ng-model="currentModel.height">
+        </fieldset>
+
+        <fieldset>
+            <label>Default height from floor</label>
+            <input type="number" ng-model="currentModel.defaultHeightFromFloor">
+        </fieldset>
+
+        <fieldset>
+            <div ng-repeat="col in currentModel.color_scheme track by $index">
+                {{col}}
+                <button type="button" title="Delete color scheme" ng-click="deleteColorScheme($index);">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+            <label>Color scheme</label>
+            <input type="text" ng-model="colorScheme">
+            <button ng-click="addColorScheme();">Add color scheme</button>
+        </fieldset>
+
+        <fieldset>
+            <label>Swap group name</label> {{currentModel.swap_group_name}}
+            <select name="swapSelect" ng-model="currentModel.swap_group_name" required>
+                <option ng-if="swap" ng-repeat="swap in genericSwapGroups" value="{{swap}}">{{swap}}</option>
+            </select>
+            <label>Add new swap group</label>
+            <input type="text" ng-model="swapGeneric">
+            <button ng-click="addGenericSwap();">Add</button>
+            <p ng-show="modelForm.swapSelect.$invalid" style="color: red">
+                Required field.
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <label>Left menu alias</label>
+            <select name="singleSelect" ng-model="currentModel.left_menu_alias">
+                <option ng-repeat="lma in leftMenuItems" value="{{lma.text}}">{{lma.text}}</option>
+            </select>
+        </fieldset>
+
+        <fieldset ng-show="currentModel.left_menu_alias === 'Doors - Entry'">
+            <label>Is opening?</label>
+            <input type="checkbox" ng-model="currentModel.isOpening">
+        </fieldset>
+
+        <fieldset>
+            <label>Visible on Vigilant?</label>
+            <input type="checkbox" ng-model="currentModel.visible">
+        </fieldset>
+
+        <fieldset>
+            <label>Disable auto-orientation?</label>
+            <input type="checkbox" ng-model="currentModel.disableAutoOrientation">
+        </fieldset>
+
+        <fieldset ng-show="!currentModel.wallInteraction">
+            <label>Default rotation degree</label>
+            <input type="number" ng-model="currentModel.defaultRotationDegree">
+        </fieldset>
+
+        <fieldset>
+            <label>Left menu thumbnail .PNG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addGenericFilesForUpload($file, 'LeftMenuThumbnails', true, currentModel._id, currentModel.left_menu_alias)"
+                        multiple accept="image/*">Select image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.leftMenuImg}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset ng-show="currentModel.left_menu_alias !== 'Windows'">
+            <label>Plan view image .PNG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addGenericFilesForUpload($file, 'PlanView', true, currentModel._id, currentModel.left_menu_alias)" multiple
+                        accept="image/*">Select {{color}} image</button>
+                </div>
+                <div style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.sprite}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Product images .PNG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addGenericFilesForUpload($file, 'ProductImage', true, currentModel._id, currentModel.left_menu_alias)" multiple
+                        accept="image/*">Select {{color}} image</button>
+                </div>
+                <div style="text-align: center;" ng-hide="!currentModel.productImage">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.productImage}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Swap pictogram image .PNG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addGenericFilesForUpload($file, 'SwapPictogram', true, currentModel._id, currentModel.left_menu_alias)" multiple
+                        accept="image/*">Select image</button>
+                </div>
+
+                <div style="text-align: center;" ng-hide="!currentModel.swapImage">
+                    <img style="max-width: 100%;" ng-src="{{currentModel.swapImage}}">
+                </div>
+        </fieldset>
+
+        <fieldset>
+            <label>Texture </label>
+            <div style="text-align: center;">
+                <button ngf-select="addGenericFilesForUpload($file, 'Texture', true, currentModel._id, currentModel.left_menu_alias, currentModel.model)"
+                    multiple accept="image/*">Select {{color}} image</button>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <div style="display: flex; flex-direction: column; width: 24%; margin-right: 5px" ng-repeat="textr in currentModel.texture">
+                    <img style="max-width: 100%;" ng-src="{{textr}}">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label>.obj File</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addGenericFilesForUpload($file, currentModel.left_menu_alias, false, currentModel._id, currentModel.left_menu_alias)"
+                        multiple accept="*">Select File</button>
+                </div>
+
+                <label>.mtl File</label>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="text-align: center;">
+                        <button ngf-select="addGenericFilesForUpload($file, currentModel.left_menu_alias, false, currentModel._id, currentModel.left_menu_alias)"
+                            multiple accept="*">Select File</button>
+                    </div>
+        </fieldset>
+
+        <button ng-click="publishModel();">{{caption}}</button>
+    </form>
+    <br>
+
+    <div>
+        <h4>Filter models</h4>
+        <form name="filterForm" novalidate>
+            <label>Object group</label>
+            <select name="objectGroupSelect" ng-model="searchIsGeneric">
+                <option value="">Any</option>
+                <option value="">Vigilant</option>
+                <option value="true">Generic models</option>
+            </select>
+            <span ng-show="searchIsGeneric">
+                <label>Left Menu Alias</label>
+                <select name="leftMenuAliasSelect" ng-model="searchLeftMenuAlias">
+                    <option ng-repeat="lma in leftMenuItems" value="{{lma.text}}">{{lma.text}}</option>
+                </select>
+            </span>
+    </div>
+    </form>
+
+    <div ng-repeat="mdl in models | filter:{isGeneric:searchIsGeneric, category:searchCategory, left_menu_alias:searchLeftMenuAlias}">
+        {{mdl.name || mdl.description}}
+        <button type="button" title="Edit model" ng-click="editModel(mdl);">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" title="Delete model" ng-click="deleteModel(mdl);">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <ul>
+            <li ng-hide="mdl.leftMenuImg">
+                Missing left menu image
+            </li>
+            <li ng-hide="mdl.sprite">
+                Missing plain view image
+            </li>
+            <li ng-hide="mdl.productImg">
+                Missing product image
+            </li>
+            <li ng-hide="mdl.slImg || mdl.isGeneric">
+                Missing shopping list image
+            </li>
+            <li ng-hide="mdl.model">
+                Missing model
+            </li>
+        </ul>
+    </div>
+
+    </div>

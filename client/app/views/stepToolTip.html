@@ -1,0 +1,13 @@
+﻿<div class="stepToolTip" ng-show="show">
+    <div class="display-table">
+        <div class="text-center">
+            <ng-transclude></ng-transclude>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-checked="checked"
+                           ng-click="tooltipVisibilityChange()"> Don't show this again.
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

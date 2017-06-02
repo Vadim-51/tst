@@ -1,0 +1,70 @@
+<div ng-show="showCeilingPopup">
+    <div class="modal-backdrop fade in"></div>
+    <div role="dialog" tabindex="-1" class="fade in modal" style="display: block;">
+        <div class="modal-ceiling-height modal-sm modal-dialog">
+            <div class="modal-content" role="document">
+                <div>
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Units and Ceiling
+                            <i class="icon-close close pull-right" ng-click="showCeilingPopup = false;"></i>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-body-content">
+                            <div class="text-center modal-save-project-icon">
+                                <img src="/assets/images/default/ceiling.png" srcset="/assets/images/default/ceiling@2x.png 2x">
+                            </div>
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="number" min="0" max="500" name="ceilingHeight" ng-model="ceilingHeight" id="ceilingHeight" class="form-control">
+                                            <label
+                                                for="ceilingHeight" class="control-label">Ceiling Height</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="radio" name="metricSystem" id="imperial" ng-model="measure.inches" value="true">
+                                                    <label class="control-label" for="imperial">Feet/Inches</label>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="radio" name="metricSystem" id="metric" ng-model="measure.inches" value="false">
+                                                    <label for="metric">Meters/Centimeters</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="changeCeilingHeight()">Save ceiling height</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<step-tooltip step="2" key="step2ToolTip">
+    Input wall length, then Enter key to accept. When done, proceed to Step 3.
+</step-tooltip>
+
+<div class="popup-info-point">
+    <div class="popup-wrp">
+        <span>Would You like to enable dragging by corners?</span>
+        <div style="text-align: center;">
+            <span ng-click="changeAllowMoveTouchPoint()" class="underline">Yes</span>
+            <span style="margin-left: 15px;" ng-click="popupInfoPointHidden()" class="underline">Cancel</span>
+        </div>
+    </div>
+</div>
+
+<wall-size-dialog />
+
+<webgl step="step2"></webgl>
+
+

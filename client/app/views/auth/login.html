@@ -1,0 +1,85 @@
+<!--REFACTOR-->
+<div class="layout-auth">
+    <div class="layout-auth-container">
+        <div class="layout-auth-brand">
+            <img class="layout-auth-logo" src="/assets/images/login_logo@2x.png"/>
+            <div class="layout-auth-text">
+                <span class="layout-auth-subtitle">
+        Design It Yourself
+        </span>
+                <h1 class="layout-auth-title">
+                    Wine cellar planner
+                </h1>
+            </div>
+        </div>
+        <div class="layout-auth-form" ng-show="pageContent === 'forgotPassword'">
+            <div>
+                <form>
+                    <h2 class="layout-auth-form--title">Forgot Password</h2>
+                    <input placeholder="Email" class="form-control" type="text" name="email" ng-model="login.email"
+                           required/>
+                    <div className="form-actions">
+                        <button type="submit" ng-click="sendPaswordRecoveryLink()"
+                                class="layout-auth-form--btn">
+                            Send link
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="layout-auth-form" ng-show="pageContent === 'register'">
+            <form>
+                <h2 class="layout-auth-form--title">Registration</h2>
+                <input placeholder="Email" class="form-control" type="email" id="email" name="RegEmail"
+                       ng-model="register.email" required/>
+                <input placeholder="Password" class="form-control" type="password" id="password" name="RegPassword"
+                       ng-model="register.password"
+                       required/>
+                <input placeholder="Pasword confirmation" class="form-control" type="password" id="confirmpass"
+                       name="check_password" ng-model="register.check_password"
+                       required/>
+                <div className="form-actions">
+                    <button type="submit" ng-click="signUp(register)" class="layout-auth-form--btn">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="layout-auth-form" ng-show="pageContent === 'login'">
+            <form>
+                <h2 class="layout-auth-form--title">Login</h2>
+                <input placeholder="Email" class="form-control" type="text" name="email" ng-model="login.email"
+                       required/>
+                <input placeholder="Password" class="form-control" type="password" ng-model="login.password"
+                       name="password" required/>
+                <div className="form-actions">
+                    <button type="submit" ng-click="logIn(login)" class="layout-auth-form--btn">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <a class="btn btn-link btn-block layout-auth-link layout-auth-forgot" ng-click="changePageContent('forgotPassword')">
+              Forgot password?
+            </a>
+        </div>
+        
+    </div>
+    <div class="layout-auth-wrap">
+    <div class="layout-auth-bottom">
+        <a class="layout-auth-link" ng-click="loginAsaGuest()">
+            Login as guest
+        </a>
+        <span class="layout-auth-separator">|</span>
+        <a class="layout-auth-link" ng-click="changePageContent('register')" ng-show="pageContent === 'login'">
+            Create account
+        </a>
+        <a class="layout-auth-link" ng-click="changePageContent('login')" ng-show="pageContent === 'register'">
+            Have an account?
+        </a>
+        <a class="layout-auth-link" ng-click="changePageContent('login')" ng-show="pageContent === 'forgotPassword'">
+            Remembered?
+        </a>
+    </div>
+    </div>
+</div>
+</div>

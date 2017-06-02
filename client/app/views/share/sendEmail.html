@@ -1,0 +1,58 @@
+<div class="helpContainer" style="text-align: center; margin-bottom: 10px; border-bottom: 1px solid #e3e3e3;">
+    <h3 style="margin: 0; padding-bottom: 10px;">Email</h3>
+</div>
+<div style="margin-top: 10px;" class="helpContainer dialog-send-email">
+    <div class="form-horizontal">
+        <form name="send">
+            <div class="form-group" ng-class="{ 'has-error' : send.email.$invalid && !send.email.$pristine }">
+                <label class="control-label col-md-3 col-sm-3">To:</label>
+
+                <div class="col-md-9 col-sm-9">
+                    <input name="email" type="email" class="form-control" ng-model="mailOptions.to"
+                           placeholder="" required>
+                <span ng-show="send.email.$invalid && !send.email.$pristine"
+                      class="help-block">Enter a valid email.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3">From:</label>
+
+                <div class="col-md-9 col-sm-9">
+                    <input type="email" class="form-control" ng-model="mailOptions.from"
+                           placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3">Subject:</label>
+
+                <div class="col-md-9 col-sm-9">
+                    <input type="text" class="form-control" ng-model="mailOptions.subject"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="text-align: left" class="control-label col-md-3 col-sm-12">Message:</label>
+
+                <div class="col-md-12 col-sm-12">
+                    <textarea class="form-control" style="width: 100%; resize: vertical;" ng-model="mailOptions.content"
+                              rows="4"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="text-align: left" class="control-label col-md-3 col-sm-12">URL:</label>
+
+                <div class="col-md-12 col-sm-12">
+                    <input type="text" class="form-control" disabled ng-model="mailOptions.url_project"
+                           placeholder="">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="dialog-button-row" >
+        <div style="text-align: right">
+            <button ng-disabled="send.$invalid" ng-click="sendEmail()" class="btn btn-primary">Send</button>
+
+            <button class="btn btn-default"ng-click="closeThisDialog()">Close</button>
+        </div>
+    </div>
+</div>

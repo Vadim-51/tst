@@ -1,0 +1,53 @@
+{
+	"steps": [{
+			"id": 1,
+			"step_name": "1.Select Shape",
+			"instruction": "",
+			"caption": "Start by selecting your Cellar Shape...",
+			"data": [
+				{
+					"imgPreview": "images/room_6.png",
+					"titleProject": "Start from Scratch",
+					"templateUrl": "views/templateRoom/customRoom.html",
+					"_id": "scratch"
+				}]
+		},
+		{
+			"id": 2,
+			"step_name": "2. Size Cellar",
+			"instruction": "",
+			"caption": "Enter Wall Lengths - Enter or Tab to move to next Wall"
+		},
+    {
+      "id": 3,
+      "step_name": "3. Plan & Personalize",
+			"instruction": "",
+      "caption": "Add building elements, then Vigilant wine racking."
+    },
+    {
+      "id": 4,
+      "step_name": "4. View in 3D",
+			"instruction": "",
+      "caption": "View in 3D - Select & Personalize"
+    },
+		{
+			"id": 5,
+			"step_name": "5. Price & Purchase",
+			"instruction": "",
+			"caption": "Price your Wine Cellar"
+		}],
+	"menu": [
+		{
+			"name": "Select Cellar Shape"
+		},
+		{
+			"name": "Size Cellar"
+		},
+		{
+			"name": "Plan & Personalize"
+		},
+		{
+			"name": "Review & Purchase"
+		}]
+
+}

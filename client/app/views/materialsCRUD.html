@@ -1,0 +1,91 @@
+<div>
+    <button ng-click="clearForm();">Add new material</button>
+    <button type="button" ng-show="!formVisible" ng-click="setFormVisible(true)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    <button type="button" ng-show="formVisible" ng-click="setFormVisible(false)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+    <br>
+    <br>
+    <form ng-show="formVisible">
+
+        <fieldset>
+            <label>Category</label>
+            <select name="singleSelect" ng-model="currentMaterial.material" ng-change="setCategory();">
+                <option value="">Select category</option>
+                <option value="wall">Walls</option>
+                <option value="floor">Floor</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label>Subcategory</label>
+            <select name="singleSelect" ng-model="currentMaterial.materialGroup">
+                <option value="">Select subcategory</option>
+                <option ng-show="currentMaterial.material === 'floor'" ng-repeat="sub in floorCategories" value="{{sub}}">
+                    {{sub}}
+                </option>
+                <option ng-show="currentMaterial.material === 'wall'" ng-repeat="sub in wallCategories" value="{{sub}}">
+                    {{sub}}
+                </option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label>Material name</label>
+            <input type="text" ng-model="currentMaterial.name">
+        </fieldset>
+
+        <fieldset>
+            <label>Number of millimeters in 1 px</label>
+            <input type="number" ng-model="currentMaterial.scale">
+        </fieldset>
+
+        <fieldset>
+            <label>Texture img .PNG or .JPG</label>
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">
+                    <button ngf-select="addFilesForUpload($file, currentMaterial.material, currentMaterial.materialGroup, currentMaterial._id)" multiple accept="image/*">Select {{color}} image</button>
+                </div>
+                <div ng-show="currentMaterial.path" style="text-align: center;">
+                    <img style="max-width: 100%;" ng-src="{{currentMaterial.path}}">
+                    <br>
+                    <label>Width: {{currentMaterial.width}}px</label>
+                    <label>Height: {{currentMaterial.height}}px</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <button ng-click="publishMaterial();">{{caption}}</button>
+    </form>
+    <br>
+
+    <div style="margin-bottom: 5px;">
+        <h4>Filter models</h4>
+        <label>Material</label>
+        <select name="singleSelect" ng-model="searchMaterial">
+            <option value="">Any</option>
+            <option value="floor">Floor</option>
+            <option value="wall">Walls</option>
+        </select>
+        <label>Material group</label>
+        <select name="singleSelect" ng-model="searchMaterialGroup">
+            <option value="">Select material group</option>
+            <option ng-show="searchMaterial === 'floor'" ng-repeat="grp in floorCategories" value="{{grp}}">{{grp}}</option>
+            <option ng-show="searchMaterial === 'wall'" ng-repeat="grp in wallCategories" value="{{grp}}">{{grp}}</option>
+        </select>
+    </div>
+
+    <div ng-repeat="mtrl in materials | filter:{material:searchMaterial, materialGroup:searchMaterialGroup}">
+        
+        {{mtrl.name}}
+        <button type="button" title="Edit model" ng-click="editMaterial(mtrl);">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" title="Delete model" ng-click="deleteMaterial(mtrl);">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+
+</div>

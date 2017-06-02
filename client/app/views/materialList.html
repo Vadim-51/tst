@@ -1,0 +1,40 @@
+﻿<div class="material-list" ng-show="mesh">
+
+    <label ng-show="!floorSelected">
+        <input type="checkbox" ng-model="applyToAll">Apply to all
+    </label>
+
+    <div ng-show="!isWallOrFloor">
+        <!--<label>Color scheme</label>-->
+        <div ng-repeat="scheme in colorSchemes" style="text-align: center;">
+            <div class="col-md-6 material-group" style="margin-top: 5px;">
+                <div class="flex-img-container" ng-click="onColorSchemeChange(scheme.colorSchemeUniqueName)">
+                    <img ng-src="{{scheme.colorSchemeImage}}" style="max-width:100%; max-height:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="isWallOrFloor">
+        <div class="btn btn-default width100" style="margin-bottom:10px; background-color:#ECECEC!important" ng-click="showMaterialGroups();">
+            Selections
+        </div>
+        <div class="row" style="margin-left: 0px; margin-right: 0px;">
+            <div ng-repeat="scheme in colorScheme" ng-if="!groupMaterials">
+                <div class="col-md-6 material-group">
+                    <div class="flex-img-container" ng-click="onMaterialGroupChange(scheme)">
+                        <img ng-src="./images/materialList/{{wallsSelected ? 'wall' : 'floor'}}/{{scheme}}.png" style="max-width:100%; max-height:100%;">
+                    </div>
+                    {{scheme}}
+                </div>
+            </div>
+            <div ng-repeat="groupScheme in groupMaterials" ng-show="groupMaterials" style="text-align: center;">
+                <div class="col-md-6 material-group" style="margin-top: 5px;">
+                    <div class="flex-img-container" ng-click="onColorSchemeChange(groupScheme.name)">
+                        <img ng-src="{{groupScheme.path}}" style="max-width:100%; max-height:100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<br><br>
+<button ng-click="clearForm();">Add new left menu item</button>
+<br><br>
+<form>
+    <fieldset>
+        <label>Text</label>
+        <input type="text" ng-model="currentLeftMenuItem.text">
+    </fieldset>
+
+    <fieldset>
+        <label>Parent item</label>
+        <select ng-model="currentLeftMenuItem.parentId">
+            <option value="rootVigilant">Vigilant root</option>
+            <option value="rootGeneric">Generic root</option>            
+            <option value="{{lt._id}}" ng-repeat="lt in leftMenuItems">{{lt.text}}</option>
+        </select>
+    </fieldset>
+    <br>
+
+    <button ng-click="publishLeftMenuItem();">{{caption}}</button>
+</form>
+<br>
+
+<div ng-repeat="item in leftMenuItems">
+    {{item.text}}
+    <button type="button" title="Edit menu item" ng-click="editLeftMenuItem(item);">
+        <span class="glyphicon glyphicon-edit"></span>
+    </button>
+    <button type="button" title="Delete menu item" ng-click="deleteLeftMenuItem(item._id);">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</div>
